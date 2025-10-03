@@ -251,6 +251,7 @@
             transition: var(--transition);
             cursor: pointer;
             border: none;
+            margin-right: 0.5rem;
         }
 
         .btn-primary {
@@ -272,6 +273,16 @@
         .btn-secondary:hover {
             background-color: var(--light-color);
             color: var(--primary-color);
+        }
+
+        .btn-info {
+            background-color: var(--accent-color);
+            color: var(--light-color);
+        }
+
+        .btn-info:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
         }
 
         .features {
@@ -1286,6 +1297,7 @@
                                 </label>
                             </div>
                             <button id="check-propositions" class="btn btn-primary">Verificar Resposta</button>
+                            <button id="reveal-propositions" class="btn btn-info" style="display: none;">Revelar Resposta Correta</button>
                             <div id="propositions-feedback" class="feedback"></div>
                             <div id="propositions-solution" class="solution">
                                 <h4>Solução:</h4>
@@ -1386,6 +1398,7 @@
                                 </div>
                             </div>
                             <button id="check-identification" class="btn btn-primary">Verificar Resposta</button>
+                            <button id="reveal-identification" class="btn btn-info" style="display: none;">Revelar Resposta Correta</button>
                             <div id="identification-feedback" class="feedback"></div>
                             <div id="identification-solution" class="solution">
                                 <h4>Solução:</h4>
@@ -1455,6 +1468,7 @@
                                 </div>
                             </div>
                             <button id="check-truth-value" class="btn btn-primary">Verificar Resposta</button>
+                            <button id="reveal-truth-value" class="btn btn-info" style="display: none;">Revelar Resposta Correta</button>
                             <div id="truth-value-feedback" class="feedback"></div>
                             <div id="truth-value-solution" class="solution">
                                 <h4>Solução:</h4>
@@ -1549,6 +1563,7 @@
                                 </div>
                             </div>
                             <button id="check-connectives" class="btn btn-primary">Verificar Resposta</button>
+                            <button id="reveal-connectives" class="btn btn-info" style="display: none;">Revelar Resposta Correta</button>
                             <div id="connectives-feedback" class="feedback"></div>
                             <div id="connectives-solution" class="solution">
                                 <h4>Solução:</h4>
@@ -1956,6 +1971,7 @@
                                 </table>
                             </div>
                             <button id="check-truth-table" class="btn btn-primary">Verificar Resposta</button>
+                            <button id="reveal-truth-table" class="btn btn-info" style="display: none;">Revelar Resposta Correta</button>
                             <div id="truth-table-feedback" class="feedback"></div>
                             <div id="truth-table-solution" class="solution">
                                 <h4>Solução:</h4>
@@ -2109,6 +2125,7 @@
                                 <input type="text" id="conclusion" class="text-input" placeholder="Digite a conclusão...">
                                 
                                 <button id="check-argument-structure" class="btn btn-primary">Verificar Resposta</button>
+                                <button id="reveal-argument-structure" class="btn btn-info" style="display: none;">Revelar Resposta Correta</button>
                                 <div id="argument-structure-feedback" class="feedback"></div>
                                 <div id="argument-structure-solution" class="solution">
                                     <h4>Solução:</h4>
@@ -2222,6 +2239,7 @@
                                 </div>
                             </div>
                             <button id="check-reasoning-types" class="btn btn-primary">Verificar Resposta</button>
+                            <button id="reveal-reasoning-types" class="btn btn-info" style="display: none;">Revelar Resposta Correta</button>
                             <div id="reasoning-types-feedback" class="feedback"></div>
                             <div id="reasoning-types-solution" class="solution">
                                 <h4>Solução:</h4>
@@ -2314,6 +2332,7 @@
                                 </div>
                             </div>
                             <button id="check-validity" class="btn btn-primary">Verificar Resposta</button>
+                            <button id="reveal-validity" class="btn btn-info" style="display: none;">Revelar Resposta Correta</button>
                             <div id="validity-feedback" class="feedback"></div>
                             <div id="validity-solution" class="solution">
                                 <h4>Solução:</h4>
@@ -2414,6 +2433,7 @@
                                 <input type="number" id="total-dishes" class="number-input" placeholder="Digite sua resposta...">
                                 
                                 <button id="check-counting-principle" class="btn btn-primary">Verificar Resposta</button>
+                                <button id="reveal-counting-principle" class="btn btn-info" style="display: none;">Revelar Resposta Correta</button>
                                 <div id="counting-principle-feedback" class="feedback"></div>
                                 <div id="counting-principle-solution" class="solution">
                                     <h4>Solução:</h4>
@@ -2507,6 +2527,7 @@
                                 <input type="number" id="arrangement-result" class="number-input" placeholder="Digite sua resposta...">
                                 
                                 <button id="check-arrangements" class="btn btn-primary">Verificar Resposta</button>
+                                <button id="reveal-arrangements" class="btn btn-info" style="display: none;">Revelar Resposta Correta</button>
                                 <div id="arrangements-feedback" class="feedback"></div>
                                 <div id="arrangements-solution" class="solution">
                                     <h4>Solução:</h4>
@@ -2592,6 +2613,7 @@
                                 <input type="number" id="permutation-result" class="number-input" placeholder="Digite sua resposta...">
                                 
                                 <button id="check-permutations" class="btn btn-primary">Verificar Resposta</button>
+                                <button id="reveal-permutations" class="btn btn-info" style="display: none;">Revelar Resposta Correta</button>
                                 <div id="permutations-feedback" class="feedback"></div>
                                 <div id="permutations-solution" class="solution">
                                     <h4>Solução:</h4>
@@ -2689,6 +2711,7 @@
                                 <input type="number" id="combination-result" class="number-input" placeholder="Digite sua resposta...">
                                 
                                 <button id="check-combinations" class="btn btn-primary">Verificar Resposta</button>
+                                <button id="reveal-combinations" class="btn btn-info" style="display: none;">Revelar Resposta Correta</button>
                                 <div id="combinations-feedback" class="feedback"></div>
                                 <div id="combinations-solution" class="solution">
                                     <h4>Solução:</h4>
@@ -2827,6 +2850,7 @@
                                 </div>
                             </div>
                             <button id="check-techniques" class="btn btn-primary">Verificar Resposta</button>
+                            <button id="reveal-techniques" class="btn btn-info" style="display: none;">Revelar Resposta Correta</button>
                             <div id="techniques-feedback" class="feedback"></div>
                             <div id="techniques-solution" class="solution">
                                 <h4>Solução:</h4>
@@ -3246,6 +3270,7 @@
             // Exercício de Identificação de Proposições
             const checkPropositions = document.getElementById('check-propositions');
             const propositionsFeedback = document.getElementById('propositions-feedback');
+            const revealPropositions = document.getElementById('reveal-propositions');
             
             if (checkPropositions) {
                 checkPropositions.addEventListener('click', () => {
@@ -3262,12 +3287,33 @@
                     } else {
                         showFeedback(propositionsFeedback, 'Tente novamente. Lembre-se que proposições são sentenças declarativas que podem ser classificadas como verdadeiras ou falsas.', 'incorrect');
                     }
+                    
+                    // Mostra o botão de revelar resposta
+                    revealPropositions.style.display = 'inline-block';
+                });
+            }
+            
+            // Botão de revelar resposta para proposições
+            if (revealPropositions) {
+                revealPropositions.addEventListener('click', () => {
+                    // Limpa todas as seleções
+                    document.getElementById('opt1').checked = false;
+                    document.getElementById('opt2').checked = false;
+                    document.getElementById('opt3').checked = false;
+                    document.getElementById('opt4').checked = false;
+                    
+                    // Marca as respostas corretas
+                    document.getElementById('opt2').checked = true;
+                    document.getElementById('opt4').checked = true;
+                    
+                    showFeedback(propositionsFeedback, 'Respostas reveladas. Estude-as e tente novamente!', 'correct');
                 });
             }
             
             // Exercício de Classificação de Sentenças
             const checkIdentification = document.getElementById('check-identification');
             const identificationFeedback = document.getElementById('identification-feedback');
+            const revealIdentification = document.getElementById('reveal-identification');
             
             if (checkIdentification) {
                 checkIdentification.addEventListener('click', () => {
@@ -3293,12 +3339,39 @@
                     } else {
                         showFeedback(identificationFeedback, 'Revise suas respostas. Lembre-se que proposições são sentenças declarativas que podem ser classificadas como verdadeiras ou falsas.', 'incorrect');
                     }
+                    
+                    // Mostra o botão de revelar resposta
+                    revealIdentification.style.display = 'inline-block';
+                });
+            }
+            
+            // Botão de revelar resposta para identificação
+            if (revealIdentification) {
+                revealIdentification.addEventListener('click', () => {
+                    // Limpa todas as seleções
+                    document.querySelector('input[name="q1"][value="proposition"]').checked = false;
+                    document.querySelector('input[name="q1"][value="not-proposition"]').checked = false;
+                    document.querySelector('input[name="q2"][value="proposition"]').checked = false;
+                    document.querySelector('input[name="q2"][value="not-proposition"]').checked = false;
+                    document.querySelector('input[name="q3"][value="proposition"]').checked = false;
+                    document.querySelector('input[name="q3"][value="not-proposition"]').checked = false;
+                    document.querySelector('input[name="q4"][value="proposition"]').checked = false;
+                    document.querySelector('input[name="q4"][value="not-proposition"]').checked = false;
+                    
+                    // Marca as respostas corretas
+                    document.querySelector('input[name="q1"][value="proposition"]').checked = true;
+                    document.querySelector('input[name="q2"][value="not-proposition"]').checked = true;
+                    document.querySelector('input[name="q3"][value="proposition"]').checked = true;
+                    document.querySelector('input[name="q4"][value="not-proposition"]').checked = true;
+                    
+                    showFeedback(identificationFeedback, 'Respostas reveladas. Estude-as e tente novamente!', 'correct');
                 });
             }
             
             // Exercício de Valor Verdade
             const checkTruthValue = document.getElementById('check-truth-value');
             const truthValueFeedback = document.getElementById('truth-value-feedback');
+            const revealTruthValue = document.getElementById('reveal-truth-value');
             
             if (checkTruthValue) {
                 checkTruthValue.addEventListener('click', () => {
@@ -3322,12 +3395,36 @@
                     } else {
                         showFeedback(truthValueFeedback, 'Tente novamente. Verifique se suas respostas correspondem à realidade.', 'incorrect');
                     }
+                    
+                    // Mostra o botão de revelar resposta
+                    revealTruthValue.style.display = 'inline-block';
+                });
+            }
+            
+            // Botão de revelar resposta para valor verdade
+            if (revealTruthValue) {
+                revealTruthValue.addEventListener('click', () => {
+                    // Limpa todas as seleções
+                    document.querySelector('input[name="tv1"][value="true"]').checked = false;
+                    document.querySelector('input[name="tv1"][value="false"]').checked = false;
+                    document.querySelector('input[name="tv2"][value="true"]').checked = false;
+                    document.querySelector('input[name="tv2"][value="false"]').checked = false;
+                    document.querySelector('input[name="tv3"][value="true"]').checked = false;
+                    document.querySelector('input[name="tv3"][value="false"]').checked = false;
+                    
+                    // Marca as respostas corretas
+                    document.querySelector('input[name="tv1"][value="true"]').checked = true;
+                    document.querySelector('input[name="tv2"][value="false"]').checked = true;
+                    document.querySelector('input[name="tv3"][value="false"]').checked = true;
+                    
+                    showFeedback(truthValueFeedback, 'Respostas reveladas. Estude-as e tente novamente!', 'correct');
                 });
             }
             
             // Exercício de Conectivos Lógicos
             const checkConnectives = document.getElementById('check-connectives');
             const connectivesFeedback = document.getElementById('connectives-feedback');
+            const revealConnectives = document.getElementById('reveal-connectives');
             
             if (checkConnectives) {
                 checkConnectives.addEventListener('click', () => {
@@ -3351,12 +3448,28 @@
                     } else {
                         showFeedback(connectivesFeedback, 'Revise suas respostas. Preste atenção às palavras-chave que indicam cada tipo de conectivo.', 'incorrect');
                     }
+                    
+                    // Mostra o botão de revelar resposta
+                    revealConnectives.style.display = 'inline-block';
+                });
+            }
+            
+            // Botão de revelar resposta para conectivos
+            if (revealConnectives) {
+                revealConnectives.addEventListener('click', () => {
+                    // Preenche os selects com as respostas corretas
+                    document.getElementById('connective1').value = 'conditional';
+                    document.getElementById('connective2').value = 'conjunction';
+                    document.getElementById('connective3').value = 'negation';
+                    
+                    showFeedback(connectivesFeedback, 'Respostas reveladas. Estude-as e tente novamente!', 'correct');
                 });
             }
             
             // Exercício de Tabela Verdade
             const checkTruthTable = document.getElementById('check-truth-table');
             const truthTableFeedback = document.getElementById('truth-table-feedback');
+            const revealTruthTable = document.getElementById('reveal-truth-table');
             
             if (checkTruthTable) {
                 checkTruthTable.addEventListener('click', () => {
@@ -3413,12 +3526,58 @@
                     } else {
                         showFeedback(truthTableFeedback, 'Tente novamente. Verifique seus cálculos para cada coluna da tabela.', 'incorrect');
                     }
+                    
+                    // Mostra o botão de revelar resposta
+                    revealTruthTable.style.display = 'inline-block';
+                });
+            }
+            
+            // Botão de revelar resposta para tabela verdade
+            if (revealTruthTable) {
+                revealTruthTable.addEventListener('click', () => {
+                    const tableSelects = document.querySelectorAll('.table-select');
+                    const correctAnswers = {
+                        '0-p-and-q': 'V',
+                        '0-not-r': 'F',
+                        '0-result': 'F',
+                        '1-p-and-q': 'V',
+                        '1-not-r': 'V',
+                        '1-result': 'V',
+                        '2-p-and-q': 'F',
+                        '2-not-r': 'F',
+                        '2-result': 'V',
+                        '3-p-and-q': 'F',
+                        '3-not-r': 'V',
+                        '3-result': 'V',
+                        '4-p-and-q': 'F',
+                        '4-not-r': 'F',
+                        '4-result': 'V',
+                        '5-p-and-q': 'F',
+                        '5-not-r': 'V',
+                        '5-result': 'V',
+                        '6-p-and-q': 'F',
+                        '6-not-r': 'F',
+                        '6-result': 'V',
+                        '7-p-and-q': 'F',
+                        '7-not-r': 'V',
+                        '7-result': 'V'
+                    };
+                    
+                    tableSelects.forEach(select => {
+                        const row = select.getAttribute('data-row');
+                        const col = select.getAttribute('data-col');
+                        const key = `${row}-${col}`;
+                        select.value = correctAnswers[key];
+                    });
+                    
+                    showFeedback(truthTableFeedback, 'Respostas reveladas. Estude-as e tente novamente!', 'correct');
                 });
             }
             
             // Exercício de Estrutura de Argumento
             const checkArgumentStructure = document.getElementById('check-argument-structure');
             const argumentStructureFeedback = document.getElementById('argument-structure-feedback');
+            const revealArgumentStructure = document.getElementById('reveal-argument-structure');
             
             if (checkArgumentStructure) {
                 checkArgumentStructure.addEventListener('click', () => {
@@ -3445,12 +3604,27 @@
                     } else {
                         showFeedback(argumentStructureFeedback, 'Tente novamente. Verifique se você identificou corretamente as duas premissas e a conclusão do argumento.', 'incorrect');
                     }
+                    
+                    // Mostra o botão de revelar resposta
+                    revealArgumentStructure.style.display = 'inline-block';
+                });
+            }
+            
+            // Botão de revelar resposta para estrutura de argumento
+            if (revealArgumentStructure) {
+                revealArgumentStructure.addEventListener('click', () => {
+                    document.getElementById('premise1').value = "Todos os mamíferos são animais de sangue quente";
+                    document.getElementById('premise2').value = "Todos os cachorros são mamíferos";
+                    document.getElementById('conclusion').value = "Portanto, todos os cachorros são animais de sangue quente";
+                    
+                    showFeedback(argumentStructureFeedback, 'Respostas reveladas. Estude-as e tente novamente!', 'correct');
                 });
             }
             
             // Exercício de Tipos de Raciocínio
             const checkReasoningTypes = document.getElementById('check-reasoning-types');
             const reasoningTypesFeedback = document.getElementById('reasoning-types-feedback');
+            const revealReasoningTypes = document.getElementById('reveal-reasoning-types');
             
             if (checkReasoningTypes) {
                 checkReasoningTypes.addEventListener('click', () => {
@@ -3474,12 +3648,36 @@
                     } else {
                         showFeedback(reasoningTypesFeedback, 'Revise suas respostas. Lembre-se que o raciocínio dedutivo vai do geral para o específico, enquanto o indutivo vai do específico para o geral.', 'incorrect');
                     }
+                    
+                    // Mostra o botão de revelar resposta
+                    revealReasoningTypes.style.display = 'inline-block';
+                });
+            }
+            
+            // Botão de revelar resposta para tipos de raciocínio
+            if (revealReasoningTypes) {
+                revealReasoningTypes.addEventListener('click', () => {
+                    // Limpa todas as seleções
+                    document.querySelector('input[name="rt1"][value="deductive"]').checked = false;
+                    document.querySelector('input[name="rt1"][value="inductive"]').checked = false;
+                    document.querySelector('input[name="rt2"][value="deductive"]').checked = false;
+                    document.querySelector('input[name="rt2"][value="inductive"]').checked = false;
+                    document.querySelector('input[name="rt3"][value="deductive"]').checked = false;
+                    document.querySelector('input[name="rt3"][value="inductive"]').checked = false;
+                    
+                    // Marca as respostas corretas
+                    document.querySelector('input[name="rt1"][value="deductive"]').checked = true;
+                    document.querySelector('input[name="rt2"][value="inductive"]').checked = true;
+                    document.querySelector('input[name="rt3"][value="deductive"]').checked = true;
+                    
+                    showFeedback(reasoningTypesFeedback, 'Respostas reveladas. Estude-as e tente novamente!', 'correct');
                 });
             }
             
             // Exercício de Validade de Argumentos
             const checkValidity = document.getElementById('check-validity');
             const validityFeedback = document.getElementById('validity-feedback');
+            const revealValidity = document.getElementById('reveal-validity');
             
             if (checkValidity) {
                 checkValidity.addEventListener('click', () => {
@@ -3503,12 +3701,36 @@
                     } else {
                         showFeedback(validityFeedback, 'Tente novamente. Lembre-se que a validade de um argumento depende de sua estrutura lógica, não da veracidade de suas premissas.', 'incorrect');
                     }
+                    
+                    // Mostra o botão de revelar resposta
+                    revealValidity.style.display = 'inline-block';
+                });
+            }
+            
+            // Botão de revelar resposta para validade
+            if (revealValidity) {
+                revealValidity.addEventListener('click', () => {
+                    // Limpa todas as seleções
+                    document.querySelector('input[name="v1"][value="valid"]').checked = false;
+                    document.querySelector('input[name="v1"][value="invalid"]').checked = false;
+                    document.querySelector('input[name="v2"][value="valid"]').checked = false;
+                    document.querySelector('input[name="v2"][value="invalid"]').checked = false;
+                    document.querySelector('input[name="v3"][value="valid"]').checked = false;
+                    document.querySelector('input[name="v3"][value="invalid"]').checked = false;
+                    
+                    // Marca as respostas corretas
+                    document.querySelector('input[name="v1"][value="invalid"]').checked = true;
+                    document.querySelector('input[name="v2"][value="valid"]').checked = true;
+                    document.querySelector('input[name="v3"][value="valid"]').checked = true;
+                    
+                    showFeedback(validityFeedback, 'Respostas reveladas. Estude-as e tente novamente!', 'correct');
                 });
             }
             
             // Exercício de Princípio Fundamental da Contagem
             const checkCountingPrinciple = document.getElementById('check-counting-principle');
             const countingPrincipleFeedback = document.getElementById('counting-principle-feedback');
+            const revealCountingPrinciple = document.getElementById('reveal-counting-principle');
             
             if (checkCountingPrinciple) {
                 checkCountingPrinciple.addEventListener('click', () => {
@@ -3525,12 +3747,25 @@
                     } else {
                         showFeedback(countingPrincipleFeedback, 'Tente novamente. Lembre-se de multiplicar o número de opções para cada escolha independente.', 'incorrect');
                     }
+                    
+                    // Mostra o botão de revelar resposta
+                    revealCountingPrinciple.style.display = 'inline-block';
+                });
+            }
+            
+            // Botão de revelar resposta para princípio fundamental
+            if (revealCountingPrinciple) {
+                revealCountingPrinciple.addEventListener('click', () => {
+                    document.getElementById('total-dishes').value = 60;
+                    
+                    showFeedback(countingPrincipleFeedback, 'Resposta revelada. Estude-a e tente novamente!', 'correct');
                 });
             }
             
             // Exercício de Arranjos
             const checkArrangements = document.getElementById('check-arrangements');
             const arrangementsFeedback = document.getElementById('arrangements-feedback');
+            const revealArrangements = document.getElementById('reveal-arrangements');
             
             if (checkArrangements) {
                 checkArrangements.addEventListener('click', () => {
@@ -3547,12 +3782,25 @@
                     } else {
                         showFeedback(arrangementsFeedback, 'Tente novamente. Use a fórmula do arranjo: A(n, p) = n! / (n - p)!', 'incorrect');
                     }
+                    
+                    // Mostra o botão de revelar resposta
+                    revealArrangements.style.display = 'inline-block';
+                });
+            }
+            
+            // Botão de revelar resposta para arranjos
+            if (revealArrangements) {
+                revealArrangements.addEventListener('click', () => {
+                    document.getElementById('arrangement-result').value = 336;
+                    
+                    showFeedback(arrangementsFeedback, 'Resposta revelada. Estude-a e tente novamente!', 'correct');
                 });
             }
             
             // Exercício de Permutações
             const checkPermutations = document.getElementById('check-permutations');
             const permutationsFeedback = document.getElementById('permutations-feedback');
+            const revealPermutations = document.getElementById('reveal-permutations');
             
             if (checkPermutations) {
                 checkPermutations.addEventListener('click', () => {
@@ -3569,12 +3817,25 @@
                     } else {
                         showFeedback(permutationsFeedback, 'Tente novamente. Use a fórmula da permutação: P(n) = n!', 'incorrect');
                     }
+                    
+                    // Mostra o botão de revelar resposta
+                    revealPermutations.style.display = 'inline-block';
+                });
+            }
+            
+            // Botão de revelar resposta para permutações
+            if (revealPermutations) {
+                revealPermutations.addEventListener('click', () => {
+                    document.getElementById('permutation-result').value = 120;
+                    
+                    showFeedback(permutationsFeedback, 'Resposta revelada. Estude-a e tente novamente!', 'correct');
                 });
             }
             
             // Exercício de Combinações
             const checkCombinations = document.getElementById('check-combinations');
             const combinationsFeedback = document.getElementById('combinations-feedback');
+            const revealCombinations = document.getElementById('reveal-combinations');
             
             if (checkCombinations) {
                 checkCombinations.addEventListener('click', () => {
@@ -3591,12 +3852,25 @@
                     } else {
                         showFeedback(combinationsFeedback, 'Tente novamente. Use a fórmula da combinação: C(n, p) = n! / (p! × (n - p)!)', 'incorrect');
                     }
+                    
+                    // Mostra o botão de revelar resposta
+                    revealCombinations.style.display = 'inline-block';
+                });
+            }
+            
+            // Botão de revelar resposta para combinações
+            if (revealCombinations) {
+                revealCombinations.addEventListener('click', () => {
+                    document.getElementById('combination-result').value = 56;
+                    
+                    showFeedback(combinationsFeedback, 'Resposta revelada. Estude-a e tente novamente!', 'correct');
                 });
             }
             
             // Exercício de Diferenças entre Técnicas
             const checkTechniques = document.getElementById('check-techniques');
             const techniquesFeedback = document.getElementById('techniques-feedback');
+            const revealTechniques = document.getElementById('reveal-techniques');
             
             if (checkTechniques) {
                 checkTechniques.addEventListener('click', () => {
@@ -3622,6 +3896,21 @@
                     } else {
                         showFeedback(techniquesFeedback, 'Revise suas respostas. Lembre-se de considerar se a ordem importa e se todos os elementos são usados.', 'incorrect');
                     }
+                    
+                    // Mostra o botão de revelar resposta
+                    revealTechniques.style.display = 'inline-block';
+                });
+            }
+            
+            // Botão de revelar resposta para diferenças
+            if (revealTechniques) {
+                revealTechniques.addEventListener('click', () => {
+                    document.getElementById('technique1').value = 'combination';
+                    document.getElementById('technique2').value = 'permutation';
+                    document.getElementById('technique3').value = 'combination';
+                    document.getElementById('technique4').value = 'arrangement';
+                    
+                    showFeedback(techniquesFeedback, 'Respostas reveladas. Estude-as e tente novamente!', 'correct');
                 });
             }
             
