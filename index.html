@@ -1,0 +1,3656 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila Lógica Matemática</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset de Estilos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Variáveis CSS */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #e74c3c;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --text-color: #333;
+            --background-color: #fff;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Estilos Globais */
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Cabeçalho e Navegação */
+        header {
+            background-color: var(--dark-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--box-shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo h1 {
+            color: var(--light-color);
+            font-size: 1.5rem;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+            margin-left: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--light-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .dropdown-toggle i {
+            margin-left: 0.3rem;
+            font-size: 0.8rem;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--dark-color);
+            min-width: 200px;
+            box-shadow: var(--box-shadow);
+            border-radius: 0.25rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--light-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .dropdown-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-color);
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
+        /* Conteúdo Principal */
+        main {
+            min-height: calc(100vh - 200px);
+            padding-top: 2rem;
+        }
+
+        .section {
+            display: none;
+            padding: 2rem 0;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 2rem;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            margin-top: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Seção Inicial */
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-color);
+            border-radius: 0.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            color: var(--light-color);
+            border: none;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--light-color);
+            border: 2px solid var(--light-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Caixas de Conteúdo */
+        .content-box {
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+        }
+
+        .example-box {
+            background-color: rgba(52, 152, 219, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .formula-box {
+            background-color: rgba(46, 204, 113, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .formula {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 0.25rem;
+            margin: 1rem 0;
+        }
+
+        .step-by-step {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 1.5rem;
+            border-radius: 0.25rem;
+            margin: 1rem 0;
+        }
+
+        .step-by-step ol {
+            padding-left: 1.5rem;
+        }
+
+        .step-by-step li {
+            margin-bottom: 1rem;
+        }
+
+        /* Tabelas */
+        .table-container {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .styled-table th, .styled-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .styled-table th {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+
+        .styled-table tr:nth-child(even) {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+
+        .styled-table tr:hover {
+            background-color: rgba(52, 152, 219, 0.2);
+        }
+
+        .truth-table {
+            margin: 1.5rem auto;
+            border-collapse: collapse;
+        }
+
+        .truth-table th, .truth-table td {
+            padding: 0.5rem;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .truth-table th {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+
+        /* Visualizações */
+        .visual-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .truth-value-visualization {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 1.5rem 0;
+        }
+
+        .truth-value {
+            text-align: center;
+        }
+
+        .truth-value .circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 0.5rem;
+        }
+
+        .truth-value.true .circle {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+        }
+
+        .truth-value.false .circle {
+            background-color: var(--accent-color);
+            color: var(--light-color);
+        }
+
+        .argument-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .premises {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 0.5rem;
+        }
+
+        .premise-box {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 0.75rem;
+            border-radius: 0.25rem;
+            text-align: center;
+        }
+
+        .arrow-down {
+            margin: 1rem 0;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .conclusion-box {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            padding: 0.75rem;
+            border-radius: 0.25rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .reasoning-comparison {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .deductive-flow, .inductive-flow {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .flow-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .flow-box {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .flow-box.general {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+
+        .flow-box.specific {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+        }
+
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .counting-visualization, .arrangement-visualization, .permutation-visualization, .combination-visualization {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .options-group, .candidates, .books, .employees {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .option-label, .position, .committee-member {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-items, .positions, .shelf {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .option-item, .candidate, .book, .employee, .shelf-slot {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            text-align: center;
+            min-width: 40px;
+        }
+
+        .multiplication-sign, .equals-sign {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+
+        .result {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            font-weight: bold;
+        }
+
+        .arrow-right {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        /* Árvore de Decisão */
+        .tree-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+
+        .tree-node {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+
+        .tree-node.root {
+            background-color: var(--dark-color);
+        }
+
+        .tree-node.leaf {
+            background-color: var(--secondary-color);
+        }
+
+        .tree-branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .tree-sub-branches {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            gap: 1rem;
+        }
+
+        /* Cards */
+        .connective-cards, .reasoning-types, .validity-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .connective-card, .reasoning-card, .validity-card {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        .connective-card h4, .reasoning-card h4, .validity-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .example {
+            background-color: rgba(52, 152, 219, 0.1);
+            padding: 1rem;
+            border-radius: 0.25rem;
+            margin: 1rem 0;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .characteristics {
+            margin-top: 1rem;
+        }
+
+        .validity-result {
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .validity-result.correct {
+            color: var(--secondary-color);
+        }
+
+        .validity-result.incorrect {
+            color: var(--accent-color);
+        }
+
+        /* Estrutura de Argumento */
+        .argument-structure {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 1.5rem;
+            border-radius: 0.25rem;
+            margin: 1rem 0;
+        }
+
+        .premise, .conclusion {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+
+        .label {
+            font-weight: bold;
+            margin-right: 1rem;
+            min-width: 100px;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        /* Abas */
+        .resource-tabs {
+            margin-top: 2rem;
+        }
+
+        .tab-buttons {
+            display: flex;
+            border-bottom: 2px solid var(--light-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-color);
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+        }
+
+        .tab-button.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .tab-button:hover {
+            color: var(--primary-color);
+        }
+
+        .tab-content {
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        .exercise-category {
+            margin-bottom: 2rem;
+        }
+
+        .exercise-item {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 1.5rem;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .reference-item, .glossary-item {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 1.5rem;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .reference-item h4, .glossary-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Exercícios Interativos */
+        .exercise-container {
+            background-color: rgba(231, 76, 60, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .exercise-options, .exercise-questions {
+            margin: 1.5rem 0;
+        }
+
+        .option-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+
+        .radio-options {
+            display: flex;
+            gap: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .radio-options label {
+            cursor: pointer;
+        }
+
+        .text-input, .number-input, .select-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+            font-family: inherit;
+        }
+
+        .text-input:focus, .number-input:focus, .select-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        .feedback {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.25rem;
+            display: none;
+        }
+
+        .feedback.correct {
+            background-color: rgba(46, 204, 113, 0.2);
+            border-left: 4px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .feedback.incorrect {
+            background-color: rgba(231, 76, 60, 0.2);
+            border-left: 4px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .solution {
+            background-color: rgba(52, 152, 219, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.25rem;
+            margin-top: 1rem;
+            border-left: 4px solid var(--primary-color);
+            display: none;
+        }
+
+        .solution.hidden {
+            display: none;
+        }
+
+        .solution.visible {
+            display: block;
+        }
+
+        .toggle-solution {
+            margin-top: 1rem;
+        }
+
+        /* Construtor de Tabela Verdade */
+        .truth-table-builder {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .table-select {
+            width: 60px;
+            padding: 0.25rem;
+            border: 1px solid #ddd;
+            border-radius: 0.25rem;
+        }
+
+        /* Aplicações */
+        .application-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .application-card {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+        }
+
+        .application-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .application-card h4 {
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--dark-color);
+                width: 100%;
+                text-align: center;
+                transition: var(--transition);
+                box-shadow: var(--box-shadow);
+                padding: 2rem 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 0.5rem 0;
+            }
+
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background-color: rgba(0, 0, 0, 0.1);
+                margin-top: 0.5rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .connective-cards, .reasoning-types, .validity-types {
+                grid-template-columns: 1fr;
+            }
+
+            .reasoning-comparison {
+                flex-direction: column;
+            }
+
+            .counting-visualization, .arrangement-visualization, .permutation-visualization, .combination-visualization {
+                flex-direction: column;
+            }
+
+            .tree-sub-branches {
+                flex-direction: column;
+            }
+
+            .tab-buttons {
+                flex-wrap: wrap;
+            }
+
+            .tab-button {
+                flex: 1;
+                min-width: 120px;
+                text-align: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+
+            .content-box {
+                padding: 1rem;
+            }
+
+            .styled-table {
+                font-size: 0.8rem;
+            }
+
+            .truth-table {
+                font-size: 0.8rem;
+            }
+
+            .table-select {
+                width: 50px;
+            }
+        }
+
+        /* Acessibilidade */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Foco */
+        .btn:focus, input:focus, select:focus, textarea:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Impressão */
+        @media print {
+            header, footer, .exercise-container, .cta-buttons {
+                display: none;
+            }
+
+            .section {
+                display: block;
+                page-break-inside: avoid;
+            }
+
+            .content-box {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><i class="fas fa-brain"></i> Lógica Matemática</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#introduction" class="nav-link">Introdução</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#propositional" class="nav-link dropdown-toggle">Lógica Proposicional <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#propositions">Proposições</a></li>
+                            <li><a href="#identification">Identificação</a></li>
+                            <li><a href="#truth-value">Valor Verdade</a></li>
+                            <li><a href="#connectives">Conectivos</a></li>
+                            <li><a href="#truth-tables">Tabelas Verdade</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#arguments" class="nav-link dropdown-toggle">Argumentos <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#argument-structure">Estrutura</a></li>
+                            <li><a href="#reasoning-types">Tipos de Raciocínio</a></li>
+                            <li><a href="#validity">Validade</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#combinatorics" class="nav-link dropdown-toggle">Análise Combinatória <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#counting-principle">Princípio Fundamental</a></li>
+                            <li><a href="#arrangements">Arranjos</a></li>
+                            <li><a href="#permutations">Permutações</a></li>
+                            <li><a href="#combinations">Combinações</a></li>
+                            <li><a href="#differences">Diferenças</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#resources" class="nav-link">Recursos</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Seção Inicial -->
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="hero">
+                    <h1>Apostila de Lógica Matemática</h1>
+                    <p>Explore os fundamentos da lógica matemática e da análise combinatória através de explicações claras, exemplos práticos e exercícios interativos.</p>
+                    <div class="cta-buttons">
+                        <a href="#introduction" class="btn btn-primary nav-link">Começar a Aprender</a>
+                        <a href="#resources" class="btn btn-secondary nav-link">Recursos Adicionais</a>
+                    </div>
+                </div>
+                <div class="features">
+                    <div class="feature-card">
+                        <i class="fas fa-book-open"></i>
+                        <h3>Conteúdo Abrangente</h3>
+                        <p>Cobertura completa dos conceitos fundamentais de lógica matemática e análise combinatória.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Exercícios Interativos</h3>
+                        <p>Pratique o que aprendeu com exercícios interativos e feedback imediato.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Acesso em Qualquer Dispositivo</h3>
+                        <p>Aprenda onde estiver, com design responsivo para desktops, tablets e celulares.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Introdução -->
+        <section id="introduction" class="section">
+            <div class="container">
+                <h2>Introdução à Lógica Matemática</h2>
+                <div class="content-box">
+                    <p>A lógica matemática é a disciplina que estuda os princípios do raciocínio válido e da inferência. Ela fornece as ferramentas necessárias para construir e analisar argumentos de forma rigorosa, sendo um pilar fundamental para a ciência da computação, a matemática e diversas outras áreas do conhecimento.</p>
+                    
+                    <h3>Importância da Lógica Matemática</h3>
+                    <p>A lógica matemática é essencial para:</p>
+                    <ul>
+                        <li>Desenvolver o raciocínio estruturado</li>
+                        <li>Construir argumentos válidos e consistentes</li>
+                        <li>Resolver problemas complexos de forma sistemática</li>
+                        <li>Formalizar conceitos em ciência da computação</li>
+                        <li>Compreender as bases da matemática</li>
+                    </ul>
+                    
+                    <h3>Aplicações</h3>
+                    <p>A lógica matemática tem aplicações em diversas áreas:</p>
+                    <div class="application-grid">
+                        <div class="application-card">
+                            <i class="fas fa-desktop"></i>
+                            <h4>Ciência da Computação</h4>
+                            <p>Desenvolvimento de algoritmos, verificação de programas, inteligência artificial.</p>
+                        </div>
+                        <div class="application-card">
+                            <i class="fas fa-calculator"></i>
+                            <h4>Matemática</h4>
+                            <p>Teoria dos conjuntos, teoria dos números, fundamentos da matemática.</p>
+                        </div>
+                        <div class="application-card">
+                            <i class="fas fa-balance-scale"></i>
+                            <h4>Filosofia</h4>
+                            <p>Análise de argumentos, epistemologia, filosofia da linguagem.</p>
+                        </div>
+                        <div class="application-card">
+                            <i class="fas fa-microscope"></i>
+                            <h4>Ciências</h4>
+                            <p>Formulação de hipóteses, método científico, inferência estatística.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise-container">
+                        <h3>Exercício de Reflexão</h3>
+                        <p>Pense em uma situação do seu dia a dia em que você utilizou o raciocínio lógico para tomar uma decisão. Como você organizou suas ideias para chegar a uma conclusão?</p>
+                        <div class="exercise-input">
+                            <textarea id="reflection-exercise" placeholder="Descreva sua situação aqui..."></textarea>
+                            <button id="submit-reflection" class="btn btn-primary">Enviar Resposta</button>
+                            <div id="reflection-feedback" class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Lógica Proposicional -->
+        <section id="propositional" class="section">
+            <div class="container">
+                <h2>Lógica Proposicional</h2>
+                <p>A lógica proposicional é o ramo da lógica que estuda as proposições e as relações entre elas. Uma proposição é uma sentença declarativa que pode ser classificada como verdadeira ou falsa, mas não ambas.</p>
+                
+                <!-- Subseção: Proposições -->
+                <div id="propositions" class="subsection">
+                    <h3>O que são Proposições?</h3>
+                    <div class="content-box">
+                        <p>Uma proposição é uma sentença declarativa que expressa um pensamento completo e que pode ser avaliada como verdadeira (V) ou falsa (F). Por exemplo, a frase "O céu é azul" é uma proposição, pois podemos atribuir a ela um valor de verdade (neste caso, verdadeiro).</p>
+                        
+                        <div class="example-box">
+                            <h4>Exemplos de Proposições:</h4>
+                            <ul>
+                                <li>"A Terra é plana." (Falsa)</li>
+                                <li>"2 + 2 = 4." (Verdadeira)</li>
+                                <li>"Brasília é a capital do Brasil." (Verdadeira)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="exercise-container">
+                            <h3>Exercício Interativo</h3>
+                            <p>Identifique quais das seguintes sentenças são proposições:</p>
+                            <div class="exercise-options">
+                                <label class="option-label">
+                                    <input type="checkbox" id="opt1" value="1"> "Qual é o seu nome?"
+                                </label>
+                                <label class="option-label">
+                                    <input type="checkbox" id="opt2" value="2"> "O sol nasce no leste."
+                                </label>
+                                <label class="option-label">
+                                    <input type="checkbox" id="opt3" value="3"> "Estude para a prova."
+                                </label>
+                                <label class="option-label">
+                                    <input type="checkbox" id="opt4" value="4"> "A água ferve a 100°C ao nível do mar."
+                                </label>
+                            </div>
+                            <button id="check-propositions" class="btn btn-primary">Verificar Resposta</button>
+                            <div id="propositions-feedback" class="feedback"></div>
+                            <div id="propositions-solution" class="solution">
+                                <h4>Solução:</h4>
+                                <p>As sentenças 2 e 4 são proposições, pois são afirmações que podem ser classificadas como verdadeiras ou falsas. As sentenças 1 e 3 não são proposições, pois são respectivamente uma pergunta e uma ordem.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subseção: Identificação de Proposições -->
+                <div id="identification" class="subsection">
+                    <h3>Identificação de Proposições e Não Proposições</h3>
+                    <div class="content-box">
+                        <p>É crucial saber diferenciar o que é uma proposição do que não é. Sentenças interrogativas, exclamativas, imperativas ou que expressam desejos não são proposições, pois não podem ser classificadas como verdadeiras ou falsas.</p>
+                        
+                        <div class="table-container">
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Tipo de Sentença</th>
+                                        <th>Exemplo</th>
+                                        <th>Classificação</th>
+                                        <th>Justificativa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Declarativa</td>
+                                        <td>"Brasília é a capital do Brasil."</td>
+                                        <td>Proposição</td>
+                                        <td>Pode ser verificada como verdadeira.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Interrogativa</td>
+                                        <td>"Qual é o seu nome?"</td>
+                                        <td>Não Proposição</td>
+                                        <td>É uma pergunta, não uma afirmação.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Exclamativa</td>
+                                        <td>"Que belo dia!"</td>
+                                        <td>Não Proposição</td>
+                                        <td>Expressa uma emoção, não um fato.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Imperativa</td>
+                                        <td>"Estude para a prova."</td>
+                                        <td>Não Proposição</td>
+                                        <td>É uma ordem, não uma declaração.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sentença Aberta</td>
+                                        <td>"x + 5 = 10"</td>
+                                        <td>Não Proposição</td>
+                                        <td>O valor de verdade depende do valor de x.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Paradoxal</td>
+                                        <td>"Esta frase é falsa."</td>
+                                        <td>Não Proposição</td>
+                                        <td>Leva a uma contradição.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="exercise-container">
+                            <h3>Exercício Interativo</h3>
+                            <p>Classifique as seguintes sentenças como proposição ou não proposição:</p>
+                            <div class="exercise-questions">
+                                <div class="question">
+                                    <p>1. "A Lua é feita de queijo."</p>
+                                    <div class="radio-options">
+                                        <label><input type="radio" name="q1" value="proposition"> Proposição</label>
+                                        <label><input type="radio" name="q1" value="not-proposition"> Não Proposição</label>
+                                    </div>
+                                </div>
+                                <div class="question">
+                                    <p>2. "Por favor, feche a porta."</p>
+                                    <div class="radio-options">
+                                        <label><input type="radio" name="q2" value="proposition"> Proposição</label>
+                                        <label><input type="radio" name="q2" value="not-proposition"> Não Proposição</label>
+                                    </div>
+                                </div>
+                                <div class="question">
+                                    <p>3. "O número π é irracional."</p>
+                                    <div class="radio-options">
+                                        <label><input type="radio" name="q3" value="proposition"> Proposição</label>
+                                        <label><input type="radio" name="q3" value="not-proposition"> Não Proposição</label>
+                                    </div>
+                                </div>
+                                <div class="question">
+                                    <p>4. "x > 5"</p>
+                                    <div class="radio-options">
+                                        <label><input type="radio" name="q4" value="proposition"> Proposição</label>
+                                        <label><input type="radio" name="q4" value="not-proposition"> Não Proposição</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="check-identification" class="btn btn-primary">Verificar Resposta</button>
+                            <div id="identification-feedback" class="feedback"></div>
+                            <div id="identification-solution" class="solution">
+                                <h4>Solução:</h4>
+                                <p>1. Proposição (falsa) - É uma afirmação que pode ser verificada como falsa.</p>
+                                <p>2. Não Proposição - É uma ordem, não uma afirmação.</p>
+                                <p>3. Proposição (verdadeira) - É uma afirmação que pode ser verificada como verdadeira.</p>
+                                <p>4. Não Proposição - É uma sentença aberta, cujo valor de verdade depende do valor de x.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subseção: Valor Verdade -->
+                <div id="truth-value" class="subsection">
+                    <h3>Valor Verdade de uma Proposição</h3>
+                    <div class="content-box">
+                        <p>O valor verdade de uma proposição é a sua classificação como verdadeira (V) ou falsa (F). Por exemplo, a proposição "A Terra é plana" tem valor verdade falso.</p>
+                        
+                        <div class="example-box">
+                            <h4>Exemplos de Valores Verdade:</h4>
+                            <ul>
+                                <li>"A Terra gira em torno do Sol." - Valor Verdade: Verdadeiro (V)</li>
+                                <li>"2 + 2 = 5." - Valor Verdade: Falso (F)</li>
+                                <li>"Todos os mamíferos voam." - Valor Verdade: Falso (F)</li>
+                                <li>"O número 7 é primo." - Valor Verdade: Verdadeiro (V)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="visual-container">
+                            <h4>Representação Visual do Valor Verdade</h4>
+                            <div class="truth-value-visualization">
+                                <div class="truth-value true">
+                                    <div class="circle">V</div>
+                                    <p>Verdadeiro</p>
+                                </div>
+                                <div class="truth-value false">
+                                    <div class="circle">F</div>
+                                    <p>Falso</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise-container">
+                            <h3>Exercício Interativo</h3>
+                            <p>Determine o valor verdade (V ou F) das seguintes proposições:</p>
+                            <div class="exercise-questions">
+                                <div class="question">
+                                    <p>1. "O Brasil é um país da América do Sul."</p>
+                                    <div class="radio-options">
+                                        <label><input type="radio" name="tv1" value="true"> Verdadeiro</label>
+                                        <label><input type="radio" name="tv1" value="false"> Falso</label>
+                                    </div>
+                                </div>
+                                <div class="question">
+                                    <p>2. "O número 10 é um número primo."</p>
+                                    <div class="radio-options">
+                                        <label><input type="radio" name="tv2" value="true"> Verdadeiro</label>
+                                        <label><input type="radio" name="tv2" value="false"> Falso</label>
+                                    </div>
+                                </div>
+                                <div class="question">
+                                    <p>3. "A água ferve a 0°C ao nível do mar."</p>
+                                    <div class="radio-options">
+                                        <label><input type="radio" name="tv3" value="true"> Verdadeiro</label>
+                                        <label><input type="radio" name="tv3" value="false"> Falso</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="check-truth-value" class="btn btn-primary">Verificar Resposta</button>
+                            <div id="truth-value-feedback" class="feedback"></div>
+                            <div id="truth-value-solution" class="solution">
+                                <h4>Solução:</h4>
+                                <p>1. Verdadeiro - O Brasil está localizado na América do Sul.</p>
+                                <p>2. Falso - O número 10 é divisível por 2 e 5, portanto não é primo.</p>
+                                <p>3. Falso - A água ferve a 100°C ao nível do mar, não a 0°C.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subseção: Conectivos Lógicos -->
+                <div id="connectives" class="subsection">
+                    <h3>Conectivos Lógicos</h3>
+                    <div class="content-box">
+                        <p>Os conectivos lógicos são operadores que permitem combinar proposições para formar novas proposições compostas. Os principais conectivos são:</p>
+                        
+                        <div class="connective-cards">
+                            <div class="connective-card">
+                                <h4>Negação (¬)</h4>
+                                <p>Representada por "não" ou "~". Inverte o valor verdade da proposição.</p>
+                                <div class="example">
+                                    <p><strong>Exemplo:</strong> Se p = "Está chovendo", então ¬p = "Não está chovendo".</p>
+                                </div>
+                            </div>
+                            <div class="connective-card">
+                                <h4>Conjunção (∧)</h4>
+                                <p>Representada por "e" ou "&". É verdadeira apenas quando ambas as proposições são verdadeiras.</p>
+                                <div class="example">
+                                    <p><strong>Exemplo:</strong> p ∧ q = "Está chovendo e faz frio".</p>
+                                </div>
+                            </div>
+                            <div class="connective-card">
+                                <h4>Disjunção (∨)</h4>
+                                <p>Representada por "ou" ou "∨". É verdadeira quando pelo menos uma das proposições é verdadeira.</p>
+                                <div class="example">
+                                    <p><strong>Exemplo:</strong> p ∨ q = "Está chovendo ou faz frio".</p>
+                                </div>
+                            </div>
+                            <div class="connective-card">
+                                <h4>Condicional (→)</h4>
+                                <p>Representada por "se... então" ou "→". É falsa apenas quando a primeira proposição é verdadeira e a segunda é falsa.</p>
+                                <div class="example">
+                                    <p><strong>Exemplo:</strong> p → q = "Se está chovendo, então a rua está molhada".</p>
+                                </div>
+                            </div>
+                            <div class="connective-card">
+                                <h4>Bicondicional (↔)</h4>
+                                <p>Representada por "se e somente se" ou "↔". É verdadeira quando ambas as proposições têm o mesmo valor verdade.</p>
+                                <div class="example">
+                                    <p><strong>Exemplo:</strong> p ↔ q = "Está chovendo se e somente se a rua está molhada".</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise-container">
+                            <h3>Exercício Interativo</h3>
+                            <p>Identifique o conectivo lógico presente em cada uma das seguintes proposições compostas:</p>
+                            <div class="exercise-questions">
+                                <div class="question">
+                                    <p>1. "Se estudo, então passo na prova."</p>
+                                    <select id="connective1" class="select-input">
+                                        <option value="">Selecione...</option>
+                                        <option value="negation">Negação</option>
+                                        <option value="conjunction">Conjunção</option>
+                                        <option value="disjunction">Disjunção</option>
+                                        <option value="conditional">Condicional</option>
+                                        <option value="biconditional">Bicondicional</option>
+                                    </select>
+                                </div>
+                                <div class="question">
+                                    <p>2. "O céu está azul e o sol está brilhando."</p>
+                                    <select id="connective2" class="select-input">
+                                        <option value="">Selecione...</option>
+                                        <option value="negation">Negação</option>
+                                        <option value="conjunction">Conjunção</option>
+                                        <option value="disjunction">Disjunção</option>
+                                        <option value="conditional">Condicional</option>
+                                        <option value="biconditional">Bicondicional</option>
+                                    </select>
+                                </div>
+                                <div class="question">
+                                    <p>3. "Não está chovendo."</p>
+                                    <select id="connective3" class="select-input">
+                                        <option value="">Selecione...</option>
+                                        <option value="negation">Negação</option>
+                                        <option value="conjunction">Conjunção</option>
+                                        <option value="disjunction">Disjunção</option>
+                                        <option value="conditional">Condicional</option>
+                                        <option value="biconditional">Bicondicional</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button id="check-connectives" class="btn btn-primary">Verificar Resposta</button>
+                            <div id="connectives-feedback" class="feedback"></div>
+                            <div id="connectives-solution" class="solution">
+                                <h4>Solução:</h4>
+                                <p>1. Condicional - A estrutura "Se... então" representa uma implicação.</p>
+                                <p>2. Conjunção - A palavra "e" conecta duas proposições que devem ser ambas verdadeiras.</p>
+                                <p>3. Negação - A palavra "não" inverte o valor verdade da proposição "Está chovendo".</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subseção: Tabelas Verdade -->
+                <div id="truth-tables" class="subsection">
+                    <h3>Tabelas Verdade</h3>
+                    <div class="content-box">
+                        <p>Uma tabela verdade é uma ferramenta utilizada para determinar o valor verdade de proposições compostas com base nos valores verdade das proposições simples que as compõem.</p>
+                        
+                        <div class="truth-table-container">
+                            <h4>Tabela Verdade da Negação (¬p)</h4>
+                            <table class="truth-table">
+                                <thead>
+                                    <tr>
+                                        <th>p</th>
+                                        <th>¬p</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>F</td>
+                                    </tr>
+                                    <tr>
+                                        <td>F</td>
+                                        <td>V</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="truth-table-container">
+                            <h4>Tabela Verdade da Conjunção (p ∧ q)</h4>
+                            <table class="truth-table">
+                                <thead>
+                                    <tr>
+                                        <th>p</th>
+                                        <th>q</th>
+                                        <th>p ∧ q</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>V</td>
+                                        <td>V</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>F</td>
+                                        <td>F</td>
+                                    </tr>
+                                    <tr>
+                                        <td>F</td>
+                                        <td>V</td>
+                                        <td>F</td>
+                                    </tr>
+                                    <tr>
+                                        <td>F</td>
+                                        <td>F</td>
+                                        <td>F</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="truth-table-container">
+                            <h4>Tabela Verdade da Disjunção (p ∨ q)</h4>
+                            <table class="truth-table">
+                                <thead>
+                                    <tr>
+                                        <th>p</th>
+                                        <th>q</th>
+                                        <th>p ∨ q</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>V</td>
+                                        <td>V</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>F</td>
+                                        <td>V</td>
+                                    </tr>
+                                    <tr>
+                                        <td>F</td>
+                                        <td>V</td>
+                                        <td>V</td>
+                                    </tr>
+                                    <tr>
+                                        <td>F</td>
+                                        <td>F</td>
+                                        <td>F</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="truth-table-container">
+                            <h4>Tabela Verdade do Condicional (p → q)</h4>
+                            <table class="truth-table">
+                                <thead>
+                                    <tr>
+                                        <th>p</th>
+                                        <th>q</th>
+                                        <th>p → q</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>V</td>
+                                        <td>V</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>F</td>
+                                        <td>F</td>
+                                    </tr>
+                                    <tr>
+                                        <td>F</td>
+                                        <td>V</td>
+                                        <td>V</td>
+                                    </tr>
+                                    <tr>
+                                        <td>F</td>
+                                        <td>F</td>
+                                        <td>V</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="truth-table-container">
+                            <h4>Tabela Verdade do Bicondicional (p ↔ q)</h4>
+                            <table class="truth-table">
+                                <thead>
+                                    <tr>
+                                        <th>p</th>
+                                        <th>q</th>
+                                        <th>p ↔ q</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>V</td>
+                                        <td>V</td>
+                                    </tr>
+                                    <tr>
+                                        <td>V</td>
+                                        <td>F</td>
+                                        <td>F</td>
+                                    </tr>
+                                    <tr>
+                                        <td>F</td>
+                                        <td>V</td>
+                                        <td>F</td>
+                                    </tr>
+                                    <tr>
+                                        <td>F</td>
+                                        <td>F</td>
+                                        <td>V</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="exercise-container">
+                            <h3>Exercício Interativo</h3>
+                            <p>Construa a tabela verdade para a proposição composta: (p ∧ q) → ¬r</p>
+                            <div class="truth-table-builder">
+                                <table class="truth-table" id="custom-truth-table">
+                                    <thead>
+                                        <tr>
+                                            <th>p</th>
+                                            <th>q</th>
+                                            <th>r</th>
+                                            <th>p ∧ q</th>
+                                            <th>¬r</th>
+                                            <th>(p ∧ q) → ¬r</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>V</td>
+                                            <td>V</td>
+                                            <td>V</td>
+                                            <td>
+                                                <select class="table-select" data-row="0" data-col="p-and-q">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="table-select" data-row="0" data-col="not-r">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="table-select" data-row="0" data-col="result">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>V</td>
+                                            <td>V</td>
+                                            <td>F</td>
+                                            <td>
+                                                <select class="table-select" data-row="1" data-col="p-and-q">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="table-select" data-row="1" data-col="not-r">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="table-select" data-row="1" data-col="result">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>V</td>
+                                            <td>F</td>
+                                            <td>V</td>
+                                            <td>
+                                                <select class="table-select" data-row="2" data-col="p-and-q">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="table-select" data-row="2" data-col="not-r">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="table-select" data-row="2" data-col="result">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>V</td>
+                                            <td>F</td>
+                                            <td>F</td>
+                                            <td>
+                                                <select class="table-select" data-row="3" data-col="p-and-q">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="table-select" data-row="3" data-col="not-r">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="table-select" data-row="3" data-col="result">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>F</td>
+                                            <td>V</td>
+                                            <td>V</td>
+                                            <td>
+                                                <select class="table-select" data-row="4" data-col="p-and-q">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="table-select" data-row="4" data-col="not-r">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="table-select" data-row="4" data-col="result">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>F</td>
+                                            <td>V</td>
+                                            <td>F</td>
+                                            <td>
+                                                <select class="table-select" data-row="5" data-col="p-and-q">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="table-select" data-row="5" data-col="not-r">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="table-select" data-row="5" data-col="result">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>F</td>
+                                            <td>F</td>
+                                            <td>V</td>
+                                            <td>
+                                                <select class="table-select" data-row="6" data-col="p-and-q">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="table-select" data-row="6" data-col="not-r">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="table-select" data-row="6" data-col="result">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>F</td>
+                                            <td>F</td>
+                                            <td>F</td>
+                                            <td>
+                                                <select class="table-select" data-row="7" data-col="p-and-q">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="table-select" data-row="7" data-col="not-r">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="table-select" data-row="7" data-col="result">
+                                                    <option value="">V/F</option>
+                                                    <option value="V">V</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <button id="check-truth-table" class="btn btn-primary">Verificar Resposta</button>
+                            <div id="truth-table-feedback" class="feedback"></div>
+                            <div id="truth-table-solution" class="solution">
+                                <h4>Solução:</h4>
+                                <table class="truth-table">
+                                    <thead>
+                                        <tr>
+                                            <th>p</th>
+                                            <th>q</th>
+                                            <th>r</th>
+                                            <th>p ∧ q</th>
+                                            <th>¬r</th>
+                                            <th>(p ∧ q) → ¬r</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>V</td>
+                                            <td>V</td>
+                                            <td>V</td>
+                                            <td>V</td>
+                                            <td>F</td>
+                                            <td>F</td>
+                                        </tr>
+                                        <tr>
+                                            <td>V</td>
+                                            <td>V</td>
+                                            <td>F</td>
+                                            <td>V</td>
+                                            <td>V</td>
+                                            <td>V</td>
+                                        </tr>
+                                        <tr>
+                                            <td>V</td>
+                                            <td>F</td>
+                                            <td>V</td>
+                                            <td>F</td>
+                                            <td>F</td>
+                                            <td>V</td>
+                                        </tr>
+                                        <tr>
+                                            <td>V</td>
+                                            <td>F</td>
+                                            <td>F</td>
+                                            <td>F</td>
+                                            <td>V</td>
+                                            <td>V</td>
+                                        </tr>
+                                        <tr>
+                                            <td>F</td>
+                                            <td>V</td>
+                                            <td>V</td>
+                                            <td>F</td>
+                                            <td>F</td>
+                                            <td>V</td>
+                                        </tr>
+                                        <tr>
+                                            <td>F</td>
+                                            <td>V</td>
+                                            <td>F</td>
+                                            <td>F</td>
+                                            <td>V</td>
+                                            <td>V</td>
+                                        </tr>
+                                        <tr>
+                                            <td>F</td>
+                                            <td>F</td>
+                                            <td>V</td>
+                                            <td>F</td>
+                                            <td>F</td>
+                                            <td>V</td>
+                                        </tr>
+                                        <tr>
+                                            <td>F</td>
+                                            <td>F</td>
+                                            <td>F</td>
+                                            <td>F</td>
+                                            <td>V</td>
+                                            <td>V</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Argumentos e Silogismos -->
+        <section id="arguments" class="section">
+            <div class="container">
+                <h2>Argumentos e Silogismos</h2>
+                <p>Um argumento é um conjunto de proposições, onde uma delas é a conclusão e as outras são as premissas que a sustentam.</p>
+                
+                <!-- Subseção: Estrutura de um Argumento -->
+                <div id="argument-structure" class="subsection">
+                    <h3>Estrutura de um Argumento: Premissas e Conclusão</h3>
+                    <div class="content-box">
+                        <p>Um argumento é formado por:</p>
+                        <ul>
+                            <li><strong>Premissas:</strong> Proposições que fornecem as evidências ou razões para a conclusão.</li>
+                            <li><strong>Conclusão:</strong> Proposição que é afirmada com base nas premissas.</li>
+                        </ul>
+                        
+                        <div class="example-box">
+                            <h4>Exemplo Clássico:</h4>
+                            <div class="argument-structure">
+                                <div class="premise">
+                                    <span class="label">Premissa 1:</span>
+                                    <span class="content">"Todos os homens são mortais."</span>
+                                </div>
+                                <div class="premise">
+                                    <span class="label">Premissa 2:</span>
+                                    <span class="content">"Sócrates é um homem."</span>
+                                </div>
+                                <div class="conclusion">
+                                    <span class="label">Conclusão:</span>
+                                    <span class="content">"Portanto, Sócrates é mortal."</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="visual-container">
+                            <h4>Representação Visual de um Argumento</h4>
+                            <div class="argument-diagram">
+                                <div class="premises">
+                                    <div class="premise-box">Premissa 1</div>
+                                    <div class="premise-box">Premissa 2</div>
+                                </div>
+                                <div class="arrow-down">
+                                    <i class="fas fa-arrow-down"></i>
+                                </div>
+                                <div class="conclusion-box">Conclusão</div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise-container">
+                            <h3>Exercício Interativo</h3>
+                            <p>Identifique as premissas e a conclusão no seguinte argumento:</p>
+                            <div class="argument-text">
+                                <p>"Todos os mamíferos são animais de sangue quente. Todos os cachorros são mamíferos. Portanto, todos os cachorros são animais de sangue quente."</p>
+                            </div>
+                            <div class="exercise-input">
+                                <label for="premise1">Premissa 1:</label>
+                                <input type="text" id="premise1" class="text-input" placeholder="Digite a primeira premissa...">
+                                
+                                <label for="premise2">Premissa 2:</label>
+                                <input type="text" id="premise2" class="text-input" placeholder="Digite a segunda premissa...">
+                                
+                                <label for="conclusion">Conclusão:</label>
+                                <input type="text" id="conclusion" class="text-input" placeholder="Digite a conclusão...">
+                                
+                                <button id="check-argument-structure" class="btn btn-primary">Verificar Resposta</button>
+                                <div id="argument-structure-feedback" class="feedback"></div>
+                                <div id="argument-structure-solution" class="solution">
+                                    <h4>Solução:</h4>
+                                    <p><strong>Premissa 1:</strong> "Todos os mamíferos são animais de sangue quente."</p>
+                                    <p><strong>Premissa 2:</strong> "Todos os cachorros são mamíferos."</p>
+                                    <p><strong>Conclusão:</strong> "Portanto, todos os cachorros são animais de sangue quente."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subseção: Tipos de Raciocínio -->
+                <div id="reasoning-types" class="subsection">
+                    <h3>Tipos de Raciocínio: Indutivo e Dedutivo</h3>
+                    <div class="content-box">
+                        <p>Existem duas formas principais de raciocínio:</p>
+                        
+                        <div class="reasoning-types">
+                            <div class="reasoning-card">
+                                <h4>Raciocínio Dedutivo</h4>
+                                <p>Parte de premissas gerais para chegar a uma conclusão específica. Se as premissas são verdadeiras, a conclusão é necessariamente verdadeira.</p>
+                                <div class="example">
+                                    <p><strong>Exemplo:</strong></p>
+                                    <p>Premissa 1: "Todos os homens são mortais."</p>
+                                    <p>Premissa 2: "Sócrates é um homem."</p>
+                                    <p>Conclusão: "Portanto, Sócrates é mortal."</p>
+                                </div>
+                                <div class="characteristics">
+                                    <p><strong>Características:</strong></p>
+                                    <ul>
+                                        <li>Garantia de validade se as premissas forem verdadeiras</li>
+                                        <li>Movimento do geral para o específico</li>
+                                        <li>Baseado em regras lógicas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="reasoning-card">
+                                <h4>Raciocínio Indutivo</h4>
+                                <p>Parte de observações específicas para chegar a uma conclusão geral. A conclusão é provável, mas não garantida, mesmo que as premissas sejam verdadeiras.</p>
+                                <div class="example">
+                                    <p><strong>Exemplo:</strong></p>
+                                    <p>Observação 1: "O cisne 1 é branco."</p>
+                                    <p>Observação 2: "O cisne 2 é branco."</p>
+                                    <p>...</p>
+                                    <p>Observação n: "O cisne n é branco."</p>
+                                    <p>Conclusão: "Todos os cisnes são brancos."</p>
+                                </div>
+                                <div class="characteristics">
+                                    <p><strong>Características:</strong></p>
+                                    <ul>
+                                        <li>Probabilidade, não garantia</li>
+                                        <li>Movimento do específico para o geral</li>
+                                        <li>Baseado em observações e padrões</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="visual-container">
+                            <h4>Comparação Visual dos Tipos de Raciocínio</h4>
+                            <div class="reasoning-comparison">
+                                <div class="deductive-flow">
+                                    <h5>Raciocínio Dedutivo</h5>
+                                    <div class="flow-diagram">
+                                        <div class="flow-box general">Geral</div>
+                                        <div class="flow-arrow">
+                                            <i class="fas fa-arrow-down"></i>
+                                        </div>
+                                        <div class="flow-box specific">Específico</div>
+                                    </div>
+                                </div>
+                                <div class="inductive-flow">
+                                    <h5>Raciocínio Indutivo</h5>
+                                    <div class="flow-diagram">
+                                        <div class="flow-box specific">Específico</div>
+                                        <div class="flow-arrow">
+                                            <i class="fas fa-arrow-down"></i>
+                                        </div>
+                                        <div class="flow-box general">Geral</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise-container">
+                            <h3>Exercício Interativo</h3>
+                            <p>Classifique os seguintes argumentos como dedutivos ou indutivos:</p>
+                            <div class="exercise-questions">
+                                <div class="question">
+                                    <p>1. "Todos os planetas do Sistema Solar orbitam o Sol. A Terra é um planeta do Sistema Solar. Portanto, a Terra orbita o Sol."</p>
+                                    <div class="radio-options">
+                                        <label><input type="radio" name="rt1" value="deductive"> Dedutivo</label>
+                                        <label><input type="radio" name="rt1" value="inductive"> Indutivo</label>
+                                    </div>
+                                </div>
+                                <div class="question">
+                                    <p>2. "Observamos 100 corvos e todos eram pretos. Portanto, todos os corvos são pretos."</p>
+                                    <div class="radio-options">
+                                        <label><input type="radio" name="rt2" value="deductive"> Dedutivo</label>
+                                        <label><input type="radio" name="rt2" value="inductive"> Indutivo</label>
+                                    </div>
+                                </div>
+                                <div class="question">
+                                    <p>3. "Todos os mamíferos amamentam seus filhotes. Os golfinhos são mamíferos. Portanto, os golfinhos amamentam seus filhotes."</p>
+                                    <div class="radio-options">
+                                        <label><input type="radio" name="rt3" value="deductive"> Dedutivo</label>
+                                        <label><input type="radio" name="rt3" value="inductive"> Indutivo</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="check-reasoning-types" class="btn btn-primary">Verificar Resposta</button>
+                            <div id="reasoning-types-feedback" class="feedback"></div>
+                            <div id="reasoning-types-solution" class="solution">
+                                <h4>Solução:</h4>
+                                <p>1. Dedutivo - Parte de uma premissa geral ("Todos os planetas do Sistema Solar orbitam o Sol") para chegar a uma conclusão específica sobre a Terra.</p>
+                                <p>2. Indutivo - Baseia-se em observações específicas (100 corvos pretos) para chegar a uma conclusão geral.</p>
+                                <p>3. Dedutivo - Parte de uma premissa geral ("Todos os mamíferos amamentam seus filhotes") para chegar a uma conclusão específica sobre os golfinhos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subseção: Validade de Argumentos -->
+                <div id="validity" class="subsection">
+                    <h3>Validade de Argumentos</h3>
+                    <div class="content-box">
+                        <p>Um argumento é válido quando a conclusão segue logicamente das premissas, independentemente da veracidade das premissas. A validade está relacionada à estrutura do argumento, não ao seu conteúdo.</p>
+                        
+                        <div class="validity-types">
+                            <div class="validity-card">
+                                <h4>Argumento Válido</h4>
+                                <p>Um argumento é válido quando, se as premissas forem verdadeiras, a conclusão necessariamente será verdadeira.</p>
+                                <div class="example">
+                                    <p><strong>Exemplo:</strong></p>
+                                    <p>Premissa 1: "Todos os mamíferos são animais."</p>
+                                    <p>Premissa 2: "Todos os cachorros são mamíferos."</p>
+                                    <p>Conclusão: "Portanto, todos os cachorros são animais."</p>
+                                    <p class="validity-result correct">✓ Argumento Válido</p>
+                                </div>
+                            </div>
+                            
+                            <div class="validity-card">
+                                <h4>Argumento Inválido</h4>
+                                <p>Um argumento é inválido quando é possível que as premissas sejam verdadeiras e a conclusão falsa.</p>
+                                <div class="example">
+                                    <p><strong>Exemplo:</strong></p>
+                                    <p>Premissa 1: "Todos os cachorros são mamíferos."</p>
+                                    <p>Premissa 2: "Todos os gatos são mamíferos."</p>
+                                    <p>Conclusão: "Portanto, todos os gatos são cachorros."</p>
+                                    <p class="validity-result incorrect">✗ Argumento Inválido</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="validity-vs-truth">
+                            <h4>Validade vs. Verdade</h4>
+                            <p>É importante distinguir entre validade e verdade:</p>
+                            <ul>
+                                <li><strong>Validade:</strong> Refere-se à estrutura lógica do argumento.</li>
+                                <li><strong>Verdade:</strong> Refere-se ao conteúdo das proposições.</li>
+                            </ul>
+                            <p>Um argumento pode ser:</p>
+                            <ul>
+                                <li>Válido com premissas verdadeiras e conclusão verdadeira</li>
+                                <li>Válido com premissas falsas e conclusão falsa</li>
+                                <li>Válido com premissas falsas e conclusão verdadeira</li>
+                                <li>Mas nunca válido com premissas verdadeiras e conclusão falsa</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="exercise-container">
+                            <h3>Exercício Interativo</h3>
+                            <p>Determine se os seguintes argumentos são válidos ou inválidos:</p>
+                            <div class="exercise-questions">
+                                <div class="question">
+                                    <p>1. Premissa 1: "Se chove, então a rua fica molhada."<br>
+                                    Premissa 2: "A rua está molhada."<br>
+                                    Conclusão: "Portanto, está chovendo."</p>
+                                    <div class="radio-options">
+                                        <label><input type="radio" name="v1" value="valid"> Válido</label>
+                                        <label><input type="radio" name="v1" value="invalid"> Inválido</label>
+                                    </div>
+                                </div>
+                                <div class="question">
+                                    <p>2. Premissa 1: "Todos os números primos maiores que 2 são ímpares."<br>
+                                    Premissa 2: "7 é um número primo maior que 2."<br>
+                                    Conclusão: "Portanto, 7 é ímpar."</p>
+                                    <div class="radio-options">
+                                        <label><input type="radio" name="v2" value="valid"> Válido</label>
+                                        <label><input type="radio" name="v2" value="invalid"> Inválido</label>
+                                    </div>
+                                </div>
+                                <div class="question">
+                                    <p>3. Premissa 1: "Todos os estudantes gostam de matemática."<br>
+                                    Premissa 2: "Maria é estudante."<br>
+                                    Conclusão: "Portanto, Maria gosta de matemática."</p>
+                                    <div class="radio-options">
+                                        <label><input type="radio" name="v3" value="valid"> Válido</label>
+                                        <label><input type="radio" name="v3" value="invalid"> Inválido</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="check-validity" class="btn btn-primary">Verificar Resposta</button>
+                            <div id="validity-feedback" class="feedback"></div>
+                            <div id="validity-solution" class="solution">
+                                <h4>Solução:</h4>
+                                <p>1. Inválido - A rua pode estar molhada por outras razões (limpeza, vazamento, etc.), não necessariamente porque está chovendo. Este é um exemplo da falácia de afirmar o consequente.</p>
+                                <p>2. Válido - A estrutura do argumento é logicamente correta. Se as premissas forem verdadeiras, a conclusão necessariamente será verdadeira.</p>
+                                <p>3. Válido - Embora a primeira premissa possa ser falsa, a estrutura do argumento é logicamente válida. Se as premissas forem verdadeiras, a conclusão necessariamente será verdadeira.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Análise Combinatória -->
+        <section id="combinatorics" class="section">
+            <div class="container">
+                <h2>Análise Combinatória</h2>
+                <p>A análise combinatória é a área da matemática que estuda a contagem de elementos em conjuntos finitos. Ela nos ajuda a determinar o número de maneiras de agrupar ou ordenar elementos de um conjunto.</p>
+                
+                <!-- Subseção: Princípio Fundamental da Contagem -->
+                <div id="counting-principle" class="subsection">
+                    <h3>Princípio Fundamental da Contagem</h3>
+                    <div class="content-box">
+                        <p>O Princípio Fundamental da Contagem (ou Princípio Multiplicativo) afirma que, se um evento pode ocorrer de m maneiras e um segundo evento pode ocorrer de n maneiras, então os dois eventos podem ocorrer de m x n maneiras. Este princípio é a base para a resolução de muitos problemas de contagem.</p>
+                        
+                        <div class="formula-box">
+                            <h4>Fórmula</h4>
+                            <div class="formula">
+                                N = m × n × p × ...
+                            </div>
+                            <p>Onde N é o número total de maneiras, e m, n, p, ... são o número de opções para cada evento independente.</p>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h4>Exemplo Ilustrativo:</h4>
+                            <p>Uma lanchonete oferece 3 tipos de pães (francês, integral, de forma) e 4 tipos de recheios (queijo, presunto, frango, vegetariano). De quantas maneiras diferentes um cliente pode montar um sanduíche escolhendo um pão e um recheio?</p>
+                            
+                            <div class="step-by-step">
+                                <h5>Passo a passo:</h5>
+                                <ol>
+                                    <li>Identifique as escolhas independentes: Escolha do pão e escolha do recheio.</li>
+                                    <li>Determine o número de opções para cada escolha:
+                                        <ul>
+                                            <li>Pão: 3 opções</li>
+                                            <li>Recheio: 4 opções</li>
+                                        </ul>
+                                    </li>
+                                    <li>Aplique o Princípio Fundamental da Contagem (multiplique o número de opções):
+                                        <ul>
+                                            <li>Total de maneiras = (Número de opções de pão) × (Número de opções de recheio)</li>
+                                            <li>Total de maneiras = 3 × 4 = 12 maneiras.</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                            </div>
+                            
+                            <div class="visual-container">
+                                <h5>Representação Visual</h5>
+                                <div class="counting-visualization">
+                                    <div class="options-group">
+                                        <div class="option-label">Pães (3 opções)</div>
+                                        <div class="option-items">
+                                            <div class="option-item">Francês</div>
+                                            <div class="option-item">Integral</div>
+                                            <div class="option-item">De forma</div>
+                                        </div>
+                                    </div>
+                                    <div class="multiplication-sign">×</div>
+                                    <div class="options-group">
+                                        <div class="option-label">Recheios (4 opções)</div>
+                                        <div class="option-items">
+                                            <div class="option-item">Queijo</div>
+                                            <div class="option-item">Presunto</div>
+                                            <div class="option-item">Frango</div>
+                                            <div class="option-item">Vegetariano</div>
+                                        </div>
+                                    </div>
+                                    <div class="equals-sign">=</div>
+                                    <div class="result">12 combinações</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise-container">
+                            <h3>Exercício Interativo</h3>
+                            <p>Um restaurante oferece 5 tipos de massas, 3 tipos de molhos e 4 tipos de acompanhamentos. Quantos pratos diferentes podem ser montados escolhendo um tipo de massa, um molho e um acompanhamento?</p>
+                            <div class="exercise-input">
+                                <label for="pasta-types">Número de tipos de massas:</label>
+                                <input type="number" id="pasta-types" class="number-input" value="5" readonly>
+                                
+                                <label for="sauce-types">Número de tipos de molhos:</label>
+                                <input type="number" id="sauce-types" class="number-input" value="3" readonly>
+                                
+                                <label for="side-types">Número de tipos de acompanhamentos:</label>
+                                <input type="number" id="side-types" class="number-input" value="4" readonly>
+                                
+                                <label for="total-dishes">Número total de pratos diferentes:</label>
+                                <input type="number" id="total-dishes" class="number-input" placeholder="Digite sua resposta...">
+                                
+                                <button id="check-counting-principle" class="btn btn-primary">Verificar Resposta</button>
+                                <div id="counting-principle-feedback" class="feedback"></div>
+                                <div id="counting-principle-solution" class="solution">
+                                    <h4>Solução:</h4>
+                                    <p>Usando o Princípio Fundamental da Contagem:</p>
+                                    <p>Total de pratos = (Número de massas) × (Número de molhos) × (Número de acompanhamentos)</p>
+                                    <p>Total de pratos = 5 × 3 × 4 = 60 pratos diferentes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subseção: Arranjos Simples -->
+                <div id="arrangements" class="subsection">
+                    <h3>Arranjos Simples</h3>
+                    <div class="content-box">
+                        <p>Um arranjo é um agrupamento ordenado de p elementos distintos de um conjunto de n elementos (com p ≤ n). A ordem dos elementos importa.</p>
+                        
+                        <div class="formula-box">
+                            <h4>Fórmula</h4>
+                            <div class="formula">
+                                A(n, p) = n! / (n - p)!
+                            </div>
+                            <p>Onde:</p>
+                            <ul>
+                                <li>A(n, p) é o número de arranjos de p elementos escolhidos de um conjunto de n elementos</li>
+                                <li>n! é o fatorial de n (n × (n-1) × (n-2) × ... × 1)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h4>Exemplo Ilustrativo:</h4>
+                            <p>Uma empresa de tecnologia precisa escolher 3 funcionários entre 5 candidatos para formar uma equipe de desenvolvimento, onde cada um terá uma função específica (líder, desenvolvedor sênior, desenvolvedor júnior). De quantas maneiras isso pode ser feito?</p>
+                            
+                            <div class="step-by-step">
+                                <h5>Passo a passo:</h5>
+                                <ol>
+                                    <li>Identifique n (total de elementos) e p (elementos a serem escolhidos):
+                                        <ul>
+                                            <li>n = 5 (total de candidatos)</li>
+                                            <li>p = 3 (funcionários a serem escolhidos)</li>
+                                        </ul>
+                                    </li>
+                                    <li>Verifique se a ordem importa: Sim, pois cada função é específica (líder, sênior, júnior).</li>
+                                    <li>Aplique a fórmula do arranjo simples:
+                                        <ul>
+                                            <li>A(5, 3) = 5! / (5 - 3)! = 5! / 2! = 5 × 4 × 3 = 60 maneiras.</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                            </div>
+                            
+                            <div class="visual-container">
+                                <h5>Representação Visual</h5>
+                                <div class="arrangement-visualization">
+                                    <div class="candidates">
+                                        <div class="candidate">A</div>
+                                        <div class="candidate">B</div>
+                                        <div class="candidate">C</div>
+                                        <div class="candidate">D</div>
+                                        <div class="candidate">E</div>
+                                    </div>
+                                    <div class="arrow-right">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                    <div class="positions">
+                                        <div class="position">Líder</div>
+                                        <div class="position">Sênior</div>
+                                        <div class="position">Júnior</div>
+                                    </div>
+                                    <div class="equals-sign">=</div>
+                                    <div class="result">60 maneiras</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise-container">
+                            <h3>Exercício Interativo</h3>
+                            <p>Uma escola precisa formar uma comissão de 3 alunos (presidente, vice-presidente e tesoureiro) a partir de um grupo de 8 alunos. De quantas maneiras diferentes essa comissão pode ser formada?</p>
+                            <div class="exercise-input">
+                                <label for="total-students">Número total de alunos (n):</label>
+                                <input type="number" id="total-students" class="number-input" value="8" readonly>
+                                
+                                <label for="committee-members">Número de alunos na comissão (p):</label>
+                                <input type="number" id="committee-members" class="number-input" value="3" readonly>
+                                
+                                <label for="arrangement-formula">Fórmula:</label>
+                                <input type="text" id="arrangement-formula" class="text-input" placeholder="Digite a fórmula do arranjo..." readonly>
+                                
+                                <label for="arrangement-result">Número de maneiras diferentes:</label>
+                                <input type="number" id="arrangement-result" class="number-input" placeholder="Digite sua resposta...">
+                                
+                                <button id="check-arrangements" class="btn btn-primary">Verificar Resposta</button>
+                                <div id="arrangements-feedback" class="feedback"></div>
+                                <div id="arrangements-solution" class="solution">
+                                    <h4>Solução:</h4>
+                                    <p>Usando a fórmula do arranjo simples:</p>
+                                    <p>A(8, 3) = 8! / (8 - 3)! = 8! / 5! = 8 × 7 × 6 = 336 maneiras diferentes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subseção: Permutações -->
+                <div id="permutations" class="subsection">
+                    <h3>Permutações</h3>
+                    <div class="content-box">
+                        <p>Uma permutação é um arranjo de todos os n elementos de um conjunto. É um caso especial de arranjo onde p = n.</p>
+                        
+                        <div class="formula-box">
+                            <h4>Fórmula</h4>
+                            <div class="formula">
+                                P(n) = n!
+                            </div>
+                            <p>Onde:</p>
+                            <ul>
+                                <li>P(n) é o número de permutações de n elementos</li>
+                                <li>n! é o fatorial de n (n × (n-1) × (n-2) × ... × 1)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h4>Exemplo Ilustrativo:</h4>
+                            <p>De quantas maneiras podem ser organizados 4 livros diferentes de programação em uma estante?</p>
+                            
+                            <div class="step-by-step">
+                                <h5>Passo a passo:</h5>
+                                <ol>
+                                    <li>Identifique n (total de elementos): n = 4 (total de livros).</li>
+                                    <li>Verifique se a ordem importa: Sim, a ordem em que os livros são organizados na estante cria uma nova disposição.</li>
+                                    <li>Verifique se todos os elementos são usados: Sim, todos os livros serão organizados.</li>
+                                    <li>Aplique a fórmula da permutação simples:
+                                        <ul>
+                                            <li>P(4) = 4! = 4 × 3 × 2 × 1 = 24 maneiras.</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                            </div>
+                            
+                            <div class="visual-container">
+                                <h5>Representação Visual</h5>
+                                <div class="permutation-visualization">
+                                    <div class="books">
+                                        <div class="book">Livro 1</div>
+                                        <div class="book">Livro 2</div>
+                                        <div class="book">Livro 3</div>
+                                        <div class="book">Livro 4</div>
+                                    </div>
+                                    <div class="arrow-right">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                    <div class="shelf">
+                                        <div class="shelf-slot">Posição 1</div>
+                                        <div class="shelf-slot">Posição 2</div>
+                                        <div class="shelf-slot">Posição 3</div>
+                                        <div class="shelf-slot">Posição 4</div>
+                                    </div>
+                                    <div class="equals-sign">=</div>
+                                    <div class="result">24 maneiras</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise-container">
+                            <h3>Exercício Interativo</h3>
+                            <p>De quantas maneiras diferentes 5 pessoas podem se sentar em uma fila de 5 cadeiras?</p>
+                            <div class="exercise-input">
+                                <label for="people-count">Número de pessoas (n):</label>
+                                <input type="number" id="people-count" class="number-input" value="5" readonly>
+                                
+                                <label for="permutation-formula">Fórmula:</label>
+                                <input type="text" id="permutation-formula" class="text-input" placeholder="Digite a fórmula da permutação..." readonly>
+                                
+                                <label for="permutation-result">Número de maneiras diferentes:</label>
+                                <input type="number" id="permutation-result" class="number-input" placeholder="Digite sua resposta...">
+                                
+                                <button id="check-permutations" class="btn btn-primary">Verificar Resposta</button>
+                                <div id="permutations-feedback" class="feedback"></div>
+                                <div id="permutations-solution" class="solution">
+                                    <h4>Solução:</h4>
+                                    <p>Usando a fórmula da permutação simples:</p>
+                                    <p>P(5) = 5! = 5 × 4 × 3 × 2 × 1 = 120 maneiras diferentes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subseção: Combinações Simples -->
+                <div id="combinations" class="subsection">
+                    <h3>Combinações Simples</h3>
+                    <div class="content-box">
+                        <p>Uma combinação é um subconjunto de p elementos de um conjunto de n elementos, onde a ordem dos elementos não importa.</p>
+                        
+                        <div class="formula-box">
+                            <h4>Fórmula</h4>
+                            <div class="formula">
+                                C(n, p) = n! / (p! × (n - p)!)
+                            </div>
+                            <p>Onde:</p>
+                            <ul>
+                                <li>C(n, p) é o número de combinações de p elementos escolhidos de um conjunto de n elementos</li>
+                                <li>n! é o fatorial de n (n × (n-1) × (n-2) × ... × 1)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="example-box">
+                            <h4>Exemplo Ilustrativo:</h4>
+                            <p>Um comitê de 3 pessoas deve ser formado a partir de um grupo de 10 funcionários. De quantas maneiras isso pode ser feito?</p>
+                            
+                            <div class="step-by-step">
+                                <h5>Passo a passo:</h5>
+                                <ol>
+                                    <li>Identifique n (total de elementos) e p (elementos a serem escolhidos):
+                                        <ul>
+                                            <li>n = 10 (total de funcionários)</li>
+                                            <li>p = 3 (pessoas para o comitê)</li>
+                                        </ul>
+                                    </li>
+                                    <li>Verifique se a ordem importa: Não, a ordem em que as pessoas são escolhidas para o comitê não altera o comitê formado.</li>
+                                    <li>Aplique a fórmula da combinação simples:
+                                        <ul>
+                                            <li>C(10, 3) = 10! / (3! × (10 - 3)!) = 10! / (3! × 7!) = (10 × 9 × 8) / (3 × 2 × 1) = 120 maneiras.</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                            </div>
+                            
+                            <div class="visual-container">
+                                <h5>Representação Visual</h5>
+                                <div class="combination-visualization">
+                                    <div class="employees">
+                                        <div class="employee">E1</div>
+                                        <div class="employee">E2</div>
+                                        <div class="employee">E3</div>
+                                        <div class="employee">E4</div>
+                                        <div class="employee">E5</div>
+                                        <div class="employee">E6</div>
+                                        <div class="employee">E7</div>
+                                        <div class="employee">E8</div>
+                                        <div class="employee">E9</div>
+                                        <div class="employee">E10</div>
+                                    </div>
+                                    <div class="arrow-right">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                    <div class="committee">
+                                        <div class="committee-member">Membro 1</div>
+                                        <div class="committee-member">Membro 2</div>
+                                        <div class="committee-member">Membro 3</div>
+                                    </div>
+                                    <div class="equals-sign">=</div>
+                                    <div class="result">120 maneiras</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise-container">
+                            <h3>Exercício Interativo</h3>
+                            <p>Uma loja de sorvetes oferece 8 sabores diferentes. De quantas maneiras um cliente pode escolher 3 sabores para um milk-shake (sem considerar a ordem dos sabores)?</p>
+                            <div class="exercise-input">
+                                <label for="flavors-count">Número de sabores (n):</label>
+                                <input type="number" id="flavors-count" class="number-input" value="8" readonly>
+                                
+                                <label for="chosen-flavors">Número de sabores escolhidos (p):</label>
+                                <input type="number" id="chosen-flavors" class="number-input" value="3" readonly>
+                                
+                                <label for="combination-formula">Fórmula:</label>
+                                <input type="text" id="combination-formula" class="text-input" placeholder="Digite a fórmula da combinação..." readonly>
+                                
+                                <label for="combination-result">Número de maneiras diferentes:</label>
+                                <input type="number" id="combination-result" class="number-input" placeholder="Digite sua resposta...">
+                                
+                                <button id="check-combinations" class="btn btn-primary">Verificar Resposta</button>
+                                <div id="combinations-feedback" class="feedback"></div>
+                                <div id="combinations-solution" class="solution">
+                                    <h4>Solução:</h4>
+                                    <p>Usando a fórmula da combinação simples:</p>
+                                    <p>C(8, 3) = 8! / (3! × (8 - 3)!) = 8! / (3! × 5!) = (8 × 7 × 6) / (3 × 2 × 1) = 56 maneiras diferentes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subseção: Diferenças entre Arranjo, Permutação e Combinação -->
+                <div id="differences" class="subsection">
+                    <h3>Diferenciando Arranjo, Permutação e Combinação</h3>
+                    <div class="content-box">
+                        <p>Para decidir qual técnica usar, faça as seguintes perguntas:</p>
+                        <ol>
+                            <li>A ordem dos elementos importa?
+                                <ul>
+                                    <li>Se sim, estamos lidando com um arranjo ou permutação.</li>
+                                    <li>Se não, estamos lidando com uma combinação.</li>
+                                </ul>
+                            </li>
+                            <li>Estamos usando todos os elementos do conjunto?
+                                <ul>
+                                    <li>Se sim (e a ordem importa), é uma permutação.</li>
+                                    <li>Se não (e a ordem importa), é um arranjo.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        
+                        <div class="comparison-table">
+                            <h4>Tabela Comparativa</h4>
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Característica</th>
+                                        <th>Arranjo</th>
+                                        <th>Permutação</th>
+                                        <th>Combinação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Ordem Importa?</td>
+                                        <td>Sim</td>
+                                        <td>Sim</td>
+                                        <td>Não</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Usa todos os elementos?</td>
+                                        <td>Não (p < n)</td>
+                                        <td>Sim (p = n)</td>
+                                        <td>Não (p < n)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fórmula</td>
+                                        <td>A(n, p) = n! / (n - p)!</td>
+                                        <td>P(n) = n!</td>
+                                        <td>C(n, p) = n! / (p! × (n - p)!)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="decision-tree">
+                            <h4>Árvore de Decisão</h4>
+                            <div class="tree-container">
+                                <div class="tree-node root">Qual técnica usar?</div>
+                                <div class="tree-branch">
+                                    <div class="tree-node">A ordem importa?</div>
+                                    <div class="tree-sub-branches">
+                                        <div class="tree-branch">
+                                            <div class="tree-node">Sim</div>
+                                            <div class="tree-sub-branches">
+                                                <div class="tree-branch">
+                                                    <div class="tree-node">Usa todos os elementos?</div>
+                                                    <div class="tree-sub-branches">
+                                                        <div class="tree-branch">
+                                                            <div class="tree-node leaf">Sim: Permutação</div>
+                                                        </div>
+                                                        <div class="tree-branch">
+                                                            <div class="tree-node leaf">Não: Arranjo</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tree-branch">
+                                            <div class="tree-node leaf">Não: Combinação</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise-container">
+                            <h3>Exercício Interativo</h3>
+                            <p>Identifique qual técnica (arranjo, permutação ou combinação) deve ser usada em cada situação:</p>
+                            <div class="exercise-questions">
+                                <div class="question">
+                                    <p>1. Escolher 3 livros de uma estante de 7 livros para levar em uma viagem.</p>
+                                    <select id="technique1" class="select-input">
+                                        <option value="">Selecione...</option>
+                                        <option value="arrangement">Arranjo</option>
+                                        <option value="permutation">Permutação</option>
+                                        <option value="combination">Combinação</option>
+                                    </select>
+                                </div>
+                                <div class="question">
+                                    <p>2. Organizar 5 pessoas em uma fila para tirar uma foto.</p>
+                                    <select id="technique2" class="select-input">
+                                        <option value="">Selecione...</option>
+                                        <option value="arrangement">Arranjo</option>
+                                        <option value="permutation">Permutação</option>
+                                        <option value="combination">Combinação</option>
+                                    </select>
+                                </div>
+                                <div class="question">
+                                    <p>3. Formar uma comissão de 4 pessoas a partir de um grupo de 10 pessoas.</p>
+                                    <select id="technique3" class="select-input">
+                                        <option value="">Selecione...</option>
+                                        <option value="arrangement">Arranjo</option>
+                                        <option value="permutation">Permutação</option>
+                                        <option value="combination">Combinação</option>
+                                    </select>
+                                </div>
+                                <div class="question">
+                                    <p>4. Escolher um presidente, um vice-presidente e um tesoureiro a partir de um grupo de 8 pessoas.</p>
+                                    <select id="technique4" class="select-input">
+                                        <option value="">Selecione...</option>
+                                        <option value="arrangement">Arranjo</option>
+                                        <option value="permutation">Permutação</option>
+                                        <option value="combination">Combinação</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button id="check-techniques" class="btn btn-primary">Verificar Resposta</button>
+                            <div id="techniques-feedback" class="feedback"></div>
+                            <div id="techniques-solution" class="solution">
+                                <h4>Solução:</h4>
+                                <p>1. Combinação - A ordem dos livros não importa, apenas quais livros foram escolhidos.</p>
+                                <p>2. Permutação - A ordem das pessoas na fila importa e todas as pessoas estão sendo usadas.</p>
+                                <p>3. Combinação - A ordem em que as pessoas são escolhidas não importa, apenas quem está na comissão.</p>
+                                <p>4. Arranjo - A ordem importa (presidente, vice-presidente, tesoureiro são posições diferentes) e nem todas as pessoas estão sendo usadas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Recursos -->
+        <section id="resources" class="section">
+            <div class="container">
+                <h2>Recursos Adicionais</h2>
+                
+                <div class="resource-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" data-tab="exercises">Exercícios Complementares</button>
+                        <button class="tab-button" data-tab="references">Referências Bibliográficas</button>
+                        <button class="tab-button" data-tab="glossary">Glossário de Termos</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <!-- Aba de Exercícios Complementares -->
+                        <div id="exercises" class="tab-pane active">
+                            <h3>Exercícios Complementares</h3>
+                            
+                            <div class="exercise-category">
+                                <h4>Lógica Proposicional</h4>
+                                <div class="exercise-list">
+                                    <div class="exercise-item">
+                                        <h5>Exercício 1: Identificação de Proposições</h5>
+                                        <p>Classifique as seguintes sentenças como proposições ou não proposições:</p>
+                                        <ol>
+                                            <li>"O número π é irracional."</li>
+                                            <li>"Por favor, me diga as horas."</li>
+                                            <li>"x + 5 = 10"</li>
+                                            <li>"A água é composta por hidrogênio e oxigênio."</li>
+                                        </ol>
+                                        <button class="btn btn-secondary toggle-solution" data-target="ex1-solution">Ver Solução</button>
+                                        <div id="ex1-solution" class="solution hidden">
+                                            <p><strong>Solução:</strong></p>
+                                            <p>1. Proposição (verdadeira) - É uma afirmação que pode ser verificada como verdadeira.</p>
+                                            <p>2. Não Proposição - É um pedido, não uma afirmação.</p>
+                                            <p>3. Não Proposição - É uma sentença aberta, cujo valor de verdade depende do valor de x.</p>
+                                            <p>4. Proposição (verdadeira) - É uma afirmação que pode ser verificada como verdadeira.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="exercise-item">
+                                        <h5>Exercício 2: Tabelas Verdade</h5>
+                                        <p>Construa a tabela verdade para a proposição: (p ∨ q) → ¬p</p>
+                                        <button class="btn btn-secondary toggle-solution" data-target="ex2-solution">Ver Solução</button>
+                                        <div id="ex2-solution" class="solution hidden">
+                                            <p><strong>Solução:</strong></p>
+                                            <table class="truth-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>p</th>
+                                                        <th>q</th>
+                                                        <th>p ∨ q</th>
+                                                        <th>¬p</th>
+                                                        <th>(p ∨ q) → ¬p</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>V</td>
+                                                        <td>V</td>
+                                                        <td>V</td>
+                                                        <td>F</td>
+                                                        <td>F</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>V</td>
+                                                        <td>F</td>
+                                                        <td>V</td>
+                                                        <td>F</td>
+                                                        <td>F</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>F</td>
+                                                        <td>V</td>
+                                                        <td>V</td>
+                                                        <td>V</td>
+                                                        <td>V</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>F</td>
+                                                        <td>F</td>
+                                                        <td>F</td>
+                                                        <td>V</td>
+                                                        <td>V</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="exercise-category">
+                                <h4>Argumentos e Silogismos</h4>
+                                <div class="exercise-list">
+                                    <div class="exercise-item">
+                                        <h5>Exercício 3: Validade de Argumentos</h5>
+                                        <p>Determine se os seguintes argumentos são válidos ou inválidos:</p>
+                                        <ol>
+                                            <li>Premissa 1: "Se chove, então a rua fica molhada."<br>
+                                            Premissa 2: "Está chovendo."<br>
+                                            Conclusão: "Portanto, a rua está molhada."</li>
+                                            
+                                            <li>Premissa 1: "Todos os pássaros voam."<br>
+                                            Premissa 2: "Pinguins são pássaros."<br>
+                                            Conclusão: "Portanto, pinguins voam."</li>
+                                        </ol>
+                                        <button class="btn btn-secondary toggle-solution" data-target="ex3-solution">Ver Solução</button>
+                                        <div id="ex3-solution" class="solution hidden">
+                                            <p><strong>Solução:</strong></p>
+                                            <p>1. Válido - Este é um exemplo do modus ponens, uma forma válida de argumento. Se as premissas forem verdadeiras, a conclusão necessariamente será verdadeira.</p>
+                                            <p>2. Válido - Embora a primeira premissa seja falsa (nem todos os pássaros voam), a estrutura do argumento é logicamente válida. Se as premissas fossem verdadeiras, a conclusão necessariamente seria verdadeira.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="exercise-category">
+                                <h4>Análise Combinatória</h4>
+                                <div class="exercise-list">
+                                    <div class="exercise-item">
+                                        <h5>Exercício 4: Problemas de Contagem</h5>
+                                        <p>Resolva os seguintes problemas de contagem:</p>
+                                        <ol>
+                                            <li>De quantas maneiras 6 pessoas podem se sentar em uma fila de 6 cadeiras?</li>
+                                            <li>Uma escola tem 12 times de futebol. De quantas maneiras podemos escolher 3 times para uma competição?</li>
+                                            <li>Um restaurante oferece 10 pratos diferentes. Um cliente quer escolher 4 pratos para um degustação. De quantas maneiras isso pode ser feito?</li>
+                                        </ol>
+                                        <button class="btn btn-secondary toggle-solution" data-target="ex4-solution">Ver Solução</button>
+                                        <div id="ex4-solution" class="solution hidden">
+                                            <p><strong>Solução:</strong></p>
+                                            <p>1. Permutação: P(6) = 6! = 6 × 5 × 4 × 3 × 2 × 1 = 720 maneiras.</p>
+                                            <p>2. Combinação: C(12, 3) = 12! / (3! × (12 - 3)!) = 12! / (3! × 9!) = (12 × 11 × 10) / (3 × 2 × 1) = 220 maneiras.</p>
+                                            <p>3. Combinação: C(10, 4) = 10! / (4! × (10 - 4)!) = 10! / (4! × 6!) = (10 × 9 × 8 × 7) / (4 × 3 × 2 × 1) = 210 maneiras.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Aba de Referências Bibliográficas -->
+                        <div id="references" class="tab-pane">
+                            <h3>Referências Bibliográficas</h3>
+                            
+                            <div class="reference-list">
+                                <div class="reference-item">
+                                    <h4>Gerônimo, J. R., & Franco, V. S. (2016). Lógica e matemática computacional.</h4>
+                                    <p>Editora e Distribuidora Educacional S.A.</p>
+                                </div>
+                                
+                                <div class="reference-item">
+                                    <h4>Alencar Filho, E. (2016). Iniciação à lógica matemática.</h4>
+                                    <p>Nobel.</p>
+                                </div>
+                                
+                                <div class="reference-item">
+                                    <h4>Mendelson, E. (2015). Introduction to Mathematical Logic.</h4>
+                                    <p>CRC Press.</p>
+                                </div>
+                                
+                                <div class="reference-item">
+                                    <h4>Hammack, R. (2013). Book of Proof.</h4>
+                                    <p>Richard Hammack.</p>
+                                </div>
+                                
+                                <div class="reference-item">
+                                    <h4>Rosen, K. H. (2018). Discrete Mathematics and Its Applications.</h4>
+                                    <p>McGraw-Hill Education.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Aba de Glossário -->
+                        <div id="glossary" class="tab-pane">
+                            <h3>Glossário de Termos</h3>
+                            
+                            <div class="glossary-list">
+                                <div class="glossary-item">
+                                    <h4>Argumento</h4>
+                                    <p>Um conjunto de proposições, onde uma delas é a conclusão e as outras são as premissas que a sustentam.</p>
+                                </div>
+                                
+                                <div class="glossary-item">
+                                    <h4>Arranjo</h4>
+                                    <p>Um agrupamento ordenado de p elementos distintos de um conjunto de n elementos (com p ≤ n).</p>
+                                </div>
+                                
+                                <div class="glossary-item">
+                                    <h4>Combinação</h4>
+                                    <p>Um subconjunto de p elementos de um conjunto de n elementos, onde a ordem dos elementos não importa.</p>
+                                </div>
+                                
+                                <div class="glossary-item">
+                                    <h4>Conclusão</h4>
+                                    <p>Proposição que é afirmada com base nas premissas de um argumento.</p>
+                                </div>
+                                
+                                <div class="glossary-item">
+                                    <h4>Conectivo Lógico</h4>
+                                    <p>Operador que permite combinar proposições para formar novas proposições compostas.</p>
+                                </div>
+                                
+                                <div class="glossary-item">
+                                    <h4>Conjunção</h4>
+                                    <p>Conectivo lógico representado por "e" ou "∧". É verdadeiro apenas quando ambas as proposições são verdadeiras.</p>
+                                </div>
+                                
+                                <div class="glossary-item">
+                                    <h4>Disjunção</h4>
+                                    <p>Conectivo lógico representado por "ou" ou "∨". É verdadeiro quando pelo menos uma das proposições é verdadeira.</p>
+                                </div>
+                                
+                                <div class="glossary-item">
+                                    <h4>Fatorial</h4>
+                                    <p>Produto de todos os inteiros positivos de 1 até n. Representado por n!.</p>
+                                </div>
+                                
+                                <div class="glossary-item">
+                                    <h4>Negação</h4>
+                                    <p>Conectivo lógico representado por "não" ou "~". Inverte o valor verdade da proposição.</p>
+                                </div>
+                                
+                                <div class="glossary-item">
+                                    <h4>Permutação</h4>
+                                    <p>Um arranjo de todos os n elementos de um conjunto. É um caso especial de arranjo onde p = n.</p>
+                                </div>
+                                
+                                <div class="glossary-item">
+                                    <h4>Premissa</h4>
+                                    <p>Proposição que fornece evidências ou razões para a conclusão de um argumento.</p>
+                                </div>
+                                
+                                <div class="glossary-item">
+                                    <h4>Proposição</h4>
+                                    <p>Uma sentença declarativa que expressa um pensamento completo e que pode ser avaliada como verdadeira (V) ou falsa (F).</p>
+                                </div>
+                                
+                                <div class="glossary-item">
+                                    <h4>Raciocínio Dedutivo</h4>
+                                    <p>Parte de premissas gerais para chegar a uma conclusão específica. Se as premissas são verdadeiras, a conclusão é necessariamente verdadeira.</p>
+                                </div>
+                                
+                                <div class="glossary-item">
+                                    <h4>Raciocínio Indutivo</h4>
+                                    <p>Parte de observações específicas para chegar a uma conclusão geral. A conclusão é provável, mas não garantida, mesmo que as premissas sejam verdadeiras.</p>
+                                </div>
+                                
+                                <div class="glossary-item">
+                                    <h4>Tabela Verdade</h4>
+                                    <p>Ferramenta utilizada para determinar o valor verdade de proposições compostas com base nos valores verdade das proposições simples que as compõem.</p>
+                                </div>
+                                
+                                <div class="glossary-item">
+                                    <h4>Valor Verdade</h4>
+                                    <p>A classificação de uma proposição como verdadeira (V) ou falsa (F).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre o Site</h3>
+                    <p>Este site educacional foi desenvolvido para auxiliar no ensino e aprendizado de Lógica Matemática e Análise Combinatória.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Conteúdo</h3>
+                    <ul>
+                        <li><a href="#introduction" class="nav-link">Introdução</a></li>
+                        <li><a href="#propositional" class="nav-link">Lógica Proposicional</a></li>
+                        <li><a href="#arguments" class="nav-link">Argumentos e Silogismos</a></li>
+                        <li><a href="#combinatorics" class="nav-link">Análise Combinatória</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="#resources" class="nav-link">Exercícios Complementares</a></li>
+                        <li><a href="#resources" class="nav-link">Referências Bibliográficas</a></li>
+                        <li><a href="#resources" class="nav-link">Glossário de Termos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p>Para dúvidas ou sugestões, entre em contato:</p>
+                    <p>Email: exemplo@universidade.edu.br</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Apostila Lógica Matemática. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Espera o DOM ser carregado
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menu Hambúrguer
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Navegação por Seções
+            const sections = document.querySelectorAll('.section');
+            
+            function showSection(sectionId) {
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+            }
+            
+            // Event Listeners para todos os links de navegação (incluindo os botões do hero)
+            const allNavLinks = document.querySelectorAll('.nav-link');
+            
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const sectionId = link.getAttribute('href').substring(1);
+                    showSection(sectionId);
+                    
+                    // Fecha o menu móvel se estiver aberto
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    
+                    // Rola para o topo da página
+                    window.scrollTo(0, 0);
+                });
+            });
+            
+            // Abas de Recursos
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    
+                    // Remove a classe active de todos os botões e painéis
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabPanes.forEach(pane => pane.classList.remove('active'));
+                    
+                    // Adiciona a classe active ao botão clicado e ao painel correspondente
+                    button.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Alternadores de Solução
+            const toggleButtons = document.querySelectorAll('.toggle-solution');
+            
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.getAttribute('data-target');
+                    const solution = document.getElementById(targetId);
+                    
+                    if (solution) {
+                        solution.classList.toggle('hidden');
+                        solution.classList.toggle('visible');
+                        
+                        // Atualiza o texto do botão
+                        if (solution.classList.contains('visible')) {
+                            button.textContent = 'Ocultar Solução';
+                        } else {
+                            button.textContent = 'Ver Solução';
+                        }
+                    }
+                });
+            });
+            
+            // Exercício de Reflexão (Introdução)
+            const reflectionExercise = document.getElementById('reflection-exercise');
+            const submitReflection = document.getElementById('submit-reflection');
+            const reflectionFeedback = document.getElementById('reflection-feedback');
+            
+            if (submitReflection) {
+                submitReflection.addEventListener('click', () => {
+                    const answer = reflectionExercise.value.trim();
+                    
+                    if (answer === '') {
+                        showFeedback(reflectionFeedback, 'Por favor, digite uma resposta antes de enviar.', 'incorrect');
+                        return;
+                    }
+                    
+                    // Simulação de feedback para uma resposta aberta
+                    showFeedback(reflectionFeedback, 'Obrigado por compartilhar sua reflexão! O raciocínio lógico é uma habilidade fundamental que usamos diariamente para tomar decisões, resolver problemas e organizar nossas ideias.', 'correct');
+                });
+            }
+            
+            // Exercício de Identificação de Proposições
+            const checkPropositions = document.getElementById('check-propositions');
+            const propositionsFeedback = document.getElementById('propositions-feedback');
+            
+            if (checkPropositions) {
+                checkPropositions.addEventListener('click', () => {
+                    const opt1 = document.getElementById('opt1').checked;
+                    const opt2 = document.getElementById('opt2').checked;
+                    const opt3 = document.getElementById('opt3').checked;
+                    const opt4 = document.getElementById('opt4').checked;
+                    
+                    // Respostas corretas: 2 e 4
+                    const correct = (opt2 && opt4) && (!opt1 && !opt3);
+                    
+                    if (correct) {
+                        showFeedback(propositionsFeedback, 'Parabéns! Você identificou corretamente as proposições.', 'correct');
+                    } else {
+                        showFeedback(propositionsFeedback, 'Tente novamente. Lembre-se que proposições são sentenças declarativas que podem ser classificadas como verdadeiras ou falsas.', 'incorrect');
+                    }
+                });
+            }
+            
+            // Exercício de Classificação de Sentenças
+            const checkIdentification = document.getElementById('check-identification');
+            const identificationFeedback = document.getElementById('identification-feedback');
+            
+            if (checkIdentification) {
+                checkIdentification.addEventListener('click', () => {
+                    const q1 = document.querySelector('input[name="q1"]:checked');
+                    const q2 = document.querySelector('input[name="q2"]:checked');
+                    const q3 = document.querySelector('input[name="q3"]:checked');
+                    const q4 = document.querySelector('input[name="q4"]:checked');
+                    
+                    if (!q1 || !q2 || !q3 || !q4) {
+                        showFeedback(identificationFeedback, 'Por favor, responda a todas as perguntas.', 'incorrect');
+                        return;
+                    }
+                    
+                    // Respostas corretas: 1-proposition, 2-not-proposition, 3-proposition, 4-not-proposition
+                    const correct = 
+                        (q1.value === 'proposition') && 
+                        (q2.value === 'not-proposition') && 
+                        (q3.value === 'proposition') && 
+                        (q4.value === 'not-proposition');
+                    
+                    if (correct) {
+                        showFeedback(identificationFeedback, 'Excelente! Você classificou corretamente todas as sentenças.', 'correct');
+                    } else {
+                        showFeedback(identificationFeedback, 'Revise suas respostas. Lembre-se que proposições são sentenças declarativas que podem ser classificadas como verdadeiras ou falsas.', 'incorrect');
+                    }
+                });
+            }
+            
+            // Exercício de Valor Verdade
+            const checkTruthValue = document.getElementById('check-truth-value');
+            const truthValueFeedback = document.getElementById('truth-value-feedback');
+            
+            if (checkTruthValue) {
+                checkTruthValue.addEventListener('click', () => {
+                    const tv1 = document.querySelector('input[name="tv1"]:checked');
+                    const tv2 = document.querySelector('input[name="tv2"]:checked');
+                    const tv3 = document.querySelector('input[name="tv3"]:checked');
+                    
+                    if (!tv1 || !tv2 || !tv3) {
+                        showFeedback(truthValueFeedback, 'Por favor, responda a todas as perguntas.', 'incorrect');
+                        return;
+                    }
+                    
+                    // Respostas corretas: 1-true, 2-false, 3-false
+                    const correct = 
+                        (tv1.value === 'true') && 
+                        (tv2.value === 'false') && 
+                        (tv3.value === 'false');
+                    
+                    if (correct) {
+                        showFeedback(truthValueFeedback, 'Parabéns! Você determinou corretamente os valores verdade das proposições.', 'correct');
+                    } else {
+                        showFeedback(truthValueFeedback, 'Tente novamente. Verifique se suas respostas correspondem à realidade.', 'incorrect');
+                    }
+                });
+            }
+            
+            // Exercício de Conectivos Lógicos
+            const checkConnectives = document.getElementById('check-connectives');
+            const connectivesFeedback = document.getElementById('connectives-feedback');
+            
+            if (checkConnectives) {
+                checkConnectives.addEventListener('click', () => {
+                    const connective1 = document.getElementById('connective1').value;
+                    const connective2 = document.getElementById('connective2').value;
+                    const connective3 = document.getElementById('connective3').value;
+                    
+                    if (!connective1 || !connective2 || !connective3) {
+                        showFeedback(connectivesFeedback, 'Por favor, selecione um conectivo para cada sentença.', 'incorrect');
+                        return;
+                    }
+                    
+                    // Respostas corretas: 1-conditional, 2-conjunction, 3-negation
+                    const correct = 
+                        (connective1 === 'conditional') && 
+                        (connective2 === 'conjunction') && 
+                        (connective3 === 'negation');
+                    
+                    if (correct) {
+                        showFeedback(connectivesFeedback, 'Excelente! Você identificou corretamente todos os conectivos lógicos.', 'correct');
+                    } else {
+                        showFeedback(connectivesFeedback, 'Revise suas respostas. Preste atenção às palavras-chave que indicam cada tipo de conectivo.', 'incorrect');
+                    }
+                });
+            }
+            
+            // Exercício de Tabela Verdade
+            const checkTruthTable = document.getElementById('check-truth-table');
+            const truthTableFeedback = document.getElementById('truth-table-feedback');
+            
+            if (checkTruthTable) {
+                checkTruthTable.addEventListener('click', () => {
+                    const tableSelects = document.querySelectorAll('.table-select');
+                    let allSelected = true;
+                    let correct = true;
+                    
+                    // Respostas corretas para (p ∧ q) → ¬r
+                    const correctAnswers = {
+                        '0-p-and-q': 'V',
+                        '0-not-r': 'F',
+                        '0-result': 'F',
+                        '1-p-and-q': 'V',
+                        '1-not-r': 'V',
+                        '1-result': 'V',
+                        '2-p-and-q': 'F',
+                        '2-not-r': 'F',
+                        '2-result': 'V',
+                        '3-p-and-q': 'F',
+                        '3-not-r': 'V',
+                        '3-result': 'V',
+                        '4-p-and-q': 'F',
+                        '4-not-r': 'F',
+                        '4-result': 'V',
+                        '5-p-and-q': 'F',
+                        '5-not-r': 'V',
+                        '5-result': 'V',
+                        '6-p-and-q': 'F',
+                        '6-not-r': 'F',
+                        '6-result': 'V',
+                        '7-p-and-q': 'F',
+                        '7-not-r': 'V',
+                        '7-result': 'V'
+                    };
+                    
+                    tableSelects.forEach(select => {
+                        if (!select.value) {
+                            allSelected = false;
+                        } else {
+                            const row = select.getAttribute('data-row');
+                            const col = select.getAttribute('data-col');
+                            const key = `${row}-${col}`;
+                            
+                            if (select.value !== correctAnswers[key]) {
+                                correct = false;
+                            }
+                        }
+                    });
+                    
+                    if (!allSelected) {
+                        showFeedback(truthTableFeedback, 'Por favor, preencha todos os campos da tabela.', 'incorrect');
+                    } else if (correct) {
+                        showFeedback(truthTableFeedback, 'Parabéns! Você construiu corretamente a tabela verdade.', 'correct');
+                    } else {
+                        showFeedback(truthTableFeedback, 'Tente novamente. Verifique seus cálculos para cada coluna da tabela.', 'incorrect');
+                    }
+                });
+            }
+            
+            // Exercício de Estrutura de Argumento
+            const checkArgumentStructure = document.getElementById('check-argument-structure');
+            const argumentStructureFeedback = document.getElementById('argument-structure-feedback');
+            
+            if (checkArgumentStructure) {
+                checkArgumentStructure.addEventListener('click', () => {
+                    const premise1 = document.getElementById('premise1').value.trim();
+                    const premise2 = document.getElementById('premise2').value.trim();
+                    const conclusion = document.getElementById('conclusion').value.trim();
+                    
+                    if (!premise1 || !premise2 || !conclusion) {
+                        showFeedback(argumentStructureFeedback, 'Por favor, preencha todos os campos.', 'incorrect');
+                        return;
+                    }
+                    
+                    // Respostas esperadas (flexíveis para variações)
+                    const expectedPremise1 = "Todos os mamíferos são animais de sangue quente";
+                    const expectedPremise2 = "Todos os cachorros são mamíferos";
+                    const expectedConclusion = "Portanto, todos os cachorros são animais de sangue quente";
+                    
+                    const p1Match = premise1.toLowerCase().includes("mamíferos") && premise1.toLowerCase().includes("sangue quente");
+                    const p2Match = premise2.toLowerCase().includes("cachorros") && premise2.toLowerCase().includes("mamíferos");
+                    const cMatch = conclusion.toLowerCase().includes("cachorros") && conclusion.toLowerCase().includes("sangue quente");
+                    
+                    if (p1Match && p2Match && cMatch) {
+                        showFeedback(argumentStructureFeedback, 'Excelente! Você identificou corretamente as premissas e a conclusão do argumento.', 'correct');
+                    } else {
+                        showFeedback(argumentStructureFeedback, 'Tente novamente. Verifique se você identificou corretamente as duas premissas e a conclusão do argumento.', 'incorrect');
+                    }
+                });
+            }
+            
+            // Exercício de Tipos de Raciocínio
+            const checkReasoningTypes = document.getElementById('check-reasoning-types');
+            const reasoningTypesFeedback = document.getElementById('reasoning-types-feedback');
+            
+            if (checkReasoningTypes) {
+                checkReasoningTypes.addEventListener('click', () => {
+                    const rt1 = document.querySelector('input[name="rt1"]:checked');
+                    const rt2 = document.querySelector('input[name="rt2"]:checked');
+                    const rt3 = document.querySelector('input[name="rt3"]:checked');
+                    
+                    if (!rt1 || !rt2 || !rt3) {
+                        showFeedback(reasoningTypesFeedback, 'Por favor, responda a todas as perguntas.', 'incorrect');
+                        return;
+                    }
+                    
+                    // Respostas corretas: 1-deductive, 2-inductive, 3-deductive
+                    const correct = 
+                        (rt1.value === 'deductive') && 
+                        (rt2.value === 'inductive') && 
+                        (rt3.value === 'deductive');
+                    
+                    if (correct) {
+                        showFeedback(reasoningTypesFeedback, 'Parabéns! Você classificou corretamente todos os tipos de raciocínio.', 'correct');
+                    } else {
+                        showFeedback(reasoningTypesFeedback, 'Revise suas respostas. Lembre-se que o raciocínio dedutivo vai do geral para o específico, enquanto o indutivo vai do específico para o geral.', 'incorrect');
+                    }
+                });
+            }
+            
+            // Exercício de Validade de Argumentos
+            const checkValidity = document.getElementById('check-validity');
+            const validityFeedback = document.getElementById('validity-feedback');
+            
+            if (checkValidity) {
+                checkValidity.addEventListener('click', () => {
+                    const v1 = document.querySelector('input[name="v1"]:checked');
+                    const v2 = document.querySelector('input[name="v2"]:checked');
+                    const v3 = document.querySelector('input[name="v3"]:checked');
+                    
+                    if (!v1 || !v2 || !v3) {
+                        showFeedback(validityFeedback, 'Por favor, responda a todas as perguntas.', 'incorrect');
+                        return;
+                    }
+                    
+                    // Respostas corretas: 1-invalid, 2-valid, 3-valid
+                    const correct = 
+                        (v1.value === 'invalid') && 
+                        (v2.value === 'valid') && 
+                        (v3.value === 'valid');
+                    
+                    if (correct) {
+                        showFeedback(validityFeedback, 'Excelente! Você avaliou corretamente a validade de todos os argumentos.', 'correct');
+                    } else {
+                        showFeedback(validityFeedback, 'Tente novamente. Lembre-se que a validade de um argumento depende de sua estrutura lógica, não da veracidade de suas premissas.', 'incorrect');
+                    }
+                });
+            }
+            
+            // Exercício de Princípio Fundamental da Contagem
+            const checkCountingPrinciple = document.getElementById('check-counting-principle');
+            const countingPrincipleFeedback = document.getElementById('counting-principle-feedback');
+            
+            if (checkCountingPrinciple) {
+                checkCountingPrinciple.addEventListener('click', () => {
+                    const totalDishes = parseInt(document.getElementById('total-dishes').value);
+                    
+                    if (!totalDishes || isNaN(totalDishes)) {
+                        showFeedback(countingPrincipleFeedback, 'Por favor, digite um número válido.', 'incorrect');
+                        return;
+                    }
+                    
+                    // Resposta correta: 5 * 3 * 4 = 60
+                    if (totalDishes === 60) {
+                        showFeedback(countingPrincipleFeedback, 'Parabéns! Você aplicou corretamente o Princípio Fundamental da Contagem.', 'correct');
+                    } else {
+                        showFeedback(countingPrincipleFeedback, 'Tente novamente. Lembre-se de multiplicar o número de opções para cada escolha independente.', 'incorrect');
+                    }
+                });
+            }
+            
+            // Exercício de Arranjos
+            const checkArrangements = document.getElementById('check-arrangements');
+            const arrangementsFeedback = document.getElementById('arrangements-feedback');
+            
+            if (checkArrangements) {
+                checkArrangements.addEventListener('click', () => {
+                    const arrangementResult = parseInt(document.getElementById('arrangement-result').value);
+                    
+                    if (!arrangementResult || isNaN(arrangementResult)) {
+                        showFeedback(arrangementsFeedback, 'Por favor, digite um número válido.', 'incorrect');
+                        return;
+                    }
+                    
+                    // Resposta correta: A(8, 3) = 8! / (8-3)! = 8! / 5! = 8 × 7 × 6 = 336
+                    if (arrangementResult === 336) {
+                        showFeedback(arrangementsFeedback, 'Excelente! Você calculou corretamente o número de arranjos.', 'correct');
+                    } else {
+                        showFeedback(arrangementsFeedback, 'Tente novamente. Use a fórmula do arranjo: A(n, p) = n! / (n - p)!', 'incorrect');
+                    }
+                });
+            }
+            
+            // Exercício de Permutações
+            const checkPermutations = document.getElementById('check-permutations');
+            const permutationsFeedback = document.getElementById('permutations-feedback');
+            
+            if (checkPermutations) {
+                checkPermutations.addEventListener('click', () => {
+                    const permutationResult = parseInt(document.getElementById('permutation-result').value);
+                    
+                    if (!permutationResult || isNaN(permutationResult)) {
+                        showFeedback(permutationsFeedback, 'Por favor, digite um número válido.', 'incorrect');
+                        return;
+                    }
+                    
+                    // Resposta correta: P(5) = 5! = 5 × 4 × 3 × 2 × 1 = 120
+                    if (permutationResult === 120) {
+                        showFeedback(permutationsFeedback, 'Parabéns! Você calculou corretamente o número de permutações.', 'correct');
+                    } else {
+                        showFeedback(permutationsFeedback, 'Tente novamente. Use a fórmula da permutação: P(n) = n!', 'incorrect');
+                    }
+                });
+            }
+            
+            // Exercício de Combinações
+            const checkCombinations = document.getElementById('check-combinations');
+            const combinationsFeedback = document.getElementById('combinations-feedback');
+            
+            if (checkCombinations) {
+                checkCombinations.addEventListener('click', () => {
+                    const combinationResult = parseInt(document.getElementById('combination-result').value);
+                    
+                    if (!combinationResult || isNaN(combinationResult)) {
+                        showFeedback(combinationsFeedback, 'Por favor, digite um número válido.', 'incorrect');
+                        return;
+                    }
+                    
+                    // Resposta correta: C(8, 3) = 8! / (3! × (8-3)!) = 8! / (3! × 5!) = (8 × 7 × 6) / (3 × 2 × 1) = 56
+                    if (combinationResult === 56) {
+                        showFeedback(combinationsFeedback, 'Excelente! Você calculou corretamente o número de combinações.', 'correct');
+                    } else {
+                        showFeedback(combinationsFeedback, 'Tente novamente. Use a fórmula da combinação: C(n, p) = n! / (p! × (n - p)!)', 'incorrect');
+                    }
+                });
+            }
+            
+            // Exercício de Diferenças entre Técnicas
+            const checkTechniques = document.getElementById('check-techniques');
+            const techniquesFeedback = document.getElementById('techniques-feedback');
+            
+            if (checkTechniques) {
+                checkTechniques.addEventListener('click', () => {
+                    const technique1 = document.getElementById('technique1').value;
+                    const technique2 = document.getElementById('technique2').value;
+                    const technique3 = document.getElementById('technique3').value;
+                    const technique4 = document.getElementById('technique4').value;
+                    
+                    if (!technique1 || !technique2 || !technique3 || !technique4) {
+                        showFeedback(techniquesFeedback, 'Por favor, selecione uma técnica para cada situação.', 'incorrect');
+                        return;
+                    }
+                    
+                    // Respostas corretas: 1-combination, 2-permutation, 3-combination, 4-arrangement
+                    const correct = 
+                        (technique1 === 'combination') && 
+                        (technique2 === 'permutation') && 
+                        (technique3 === 'combination') && 
+                        (technique4 === 'arrangement');
+                    
+                    if (correct) {
+                        showFeedback(techniquesFeedback, 'Parabéns! Você identificou corretamente qual técnica usar em cada situação.', 'correct');
+                    } else {
+                        showFeedback(techniquesFeedback, 'Revise suas respostas. Lembre-se de considerar se a ordem importa e se todos os elementos são usados.', 'incorrect');
+                    }
+                });
+            }
+            
+            // Função para mostrar feedback
+            function showFeedback(element, message, type) {
+                element.textContent = message;
+                element.className = 'feedback ' + type;
+                element.style.display = 'block';
+                
+                // Rola para o feedback
+                element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            
+            // Preenchimento automático de fórmulas
+            const arrangementFormula = document.getElementById('arrangement-formula');
+            if (arrangementFormula) {
+                arrangementFormula.value = 'A(n, p) = n! / (n - p)!';
+            }
+            
+            const permutationFormula = document.getElementById('permutation-formula');
+            if (permutationFormula) {
+                permutationFormula.value = 'P(n) = n!';
+            }
+            
+            const combinationFormula = document.getElementById('combination-formula');
+            if (combinationFormula) {
+                combinationFormula.value = 'C(n, p) = n! / (p! × (n - p)!)';
+            }
+        });
+    </script>
+</body>
+</html>
